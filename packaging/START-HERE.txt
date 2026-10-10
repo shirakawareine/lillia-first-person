@@ -1,0 +1,46 @@
+Lillia First Person 0.1.28 - Windows x64 fresh-install bundle
+English / 日本語 / 简体中文 / 繁體中文
+
+ENGLISH
+1. Save and exit the game. This bundle is intended for a fresh game 1.1 installation without an existing mod loader.
+2. Extract ALL contents directly beside NoviceSuccubusLillia.exe (not into its Data folder or an extra nested folder).
+3. Start the game normally. First launch needs Internet access to download Unity base libraries and generate interop files. It may take several minutes; do not repeatedly launch the game.
+4. First person is enabled by default. F8 toggles first/third person; F9 toggles hair visibility.
+The three recommended ClipLimits entries are already configured (3 degrees left/right, 2 up/down). Other animations use 75 left/right, 75 up, 85 down. If NPCs block an event view, press F8.
+Already using BepInEx or other mods? Use the plugin-only release instead; do not overwrite your loader, winhttp.dll, or configuration with this fresh-install bundle. Existing settings would be overwritten by extraction.
+Troubleshooting: BepInEx/LogOutput.log and BepInEx/FirstPersonTest.log. No console window is expected. Documentation: LilliaFirstPerson-Docs/README.md.
+Remove only BepInEx/plugins/FirstPersonTest.dll to uninstall this plugin. Do not delete shared loader files used by other mods.
+The bundle has been statically checked; its first-run process has not been retested on a clean game installation. It contains the same loader and plugin binaries as the tested setup. No game files or generated interop/cache files are included.
+
+日本語
+1. セーブしてゲームを終了します。このセットは、ローダー未導入のゲーム 1.1 への新規導入用です。
+2. 全ファイルを NoviceSuccubusLillia.exe と同じフォルダーへ展開します。Data フォルダーや余分なサブフォルダーには入れないでください。
+3. 通常どおり起動します。初回は Unity 基礎ライブラリのダウンロードと interop 生成のため、インターネット接続と数分の待ち時間が必要な場合があります。繰り返し起動しないでください。
+4. 初期状態で一人称が有効です。F8 で一人称／三人称、F9 で髪の表示を切り替えます。
+推奨する 3 クリップの ClipLimits は設定済み（左右各 3°、上下各 2°）。その他は左右各 75°、上 75°、下 85°。イベントで NPC に遮られたら F8 を押してください。
+BepInEx や他の MOD を導入済みの場合は通常のプラグイン単体版を使い、既存のローダー、winhttp.dll、設定を上書きしないでください。
+ログ：BepInEx/LogOutput.log、BepInEx/FirstPersonTest.log。コンソールは表示しません。説明：LilliaFirstPerson-Docs/README.ja.md。
+削除するのは BepInEx/plugins/FirstPersonTest.dll のみで構いません。他の MOD が使うローダーを削除しないでください。
+静的検証済みですが、クリーンな環境での初回起動は再検証していません。実機確認済み環境と同じローダー・プラグインを含みます。ゲーム本体や生成済み interop・キャッシュは含みません。
+
+简体中文
+1. 保存并退出游戏。本包用于尚未安装加载器的游戏 1.1。
+2. 将全部内容解压到 NoviceSuccubusLillia.exe 所在目录，不要放进 Data 文件夹或额外套一层文件夹。
+3. 正常启动游戏。首次启动需要联网下载 Unity 基础库并生成 interop，可能需要等待数分钟，请勿反复启动。
+4. 默认开启第一人称。F8 切换第一／第三人称，F9 隐藏／显示头发。
+三个推荐动作的 ClipLimits 已配置好（左右各 3°、上下各 2°）；其他动作使用左右各 75°、上 75°、下 85°。演出被 NPC 挡住时按 F8。
+已安装 BepInEx 或其他 MOD 的玩家请使用普通插件包，不要用本包覆盖原有加载器、winhttp.dll 或配置；直接覆盖解压会替换已有设置。
+排错日志：BepInEx/LogOutput.log、BepInEx/FirstPersonTest.log。不弹日志控制台属于正常设置。说明：LilliaFirstPerson-Docs/README.zh-CN.md。
+卸载插件只需删除 BepInEx/plugins/FirstPersonTest.dll，不要删除其他 MOD 共用的加载器。
+本包已完成静态检查，未在干净游戏上重新实测首次启动流程。加载器和插件与已测试环境一致，不包含游戏文件、已生成的 interop 或缓存。
+
+繁體中文
+1. 存檔並結束遊戲。本包適用於尚未安裝載入器的遊戲 1.1。
+2. 將全部內容解壓縮至 NoviceSuccubusLillia.exe 所在目錄，不要放入 Data 資料夾或多套一層資料夾。
+3. 正常啟動遊戲。首次啟動需連網下載 Unity 基礎函式庫並產生 interop，可能需等待數分鐘，請勿重複啟動。
+4. 預設開啟第一人稱。F8 切換第一／第三人稱，F9 隱藏／顯示頭髮。
+三個推薦動作的 ClipLimits 已設定好（左右各 3°、上下各 2°）；其他動作為左右各 75°、上 75°、下 85°。演出被 NPC 遮住時按 F8。
+已安裝 BepInEx 或其他 MOD 者請使用一般外掛包，不要覆蓋原有載入器、winhttp.dll 或設定；直接覆蓋解壓縮會取代既有設定。
+排錯日誌：BepInEx/LogOutput.log、BepInEx/FirstPersonTest.log。不顯示主控台是正常設定。說明：LilliaFirstPerson-Docs/README.zh-TW.md。
+移除外掛只需刪除 BepInEx/plugins/FirstPersonTest.dll，不要刪除其他 MOD 共用的載入器。
+本包已通過靜態檢查，未在乾淨遊戲上重新實測首次啟動流程。載入器與外掛和已測試環境相同，不含遊戲檔案、已產生的 interop 或快取。

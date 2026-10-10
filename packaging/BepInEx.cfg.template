@@ -1,0 +1,3 @@
+# Avoid a separate console window; file logs remain available.
+[Logging.Console]
+Enabled = false

@@ -4,6 +4,14 @@
 
 An unofficial, toggleable first-person plugin for **Novice Succubus Lillia**. Version **0.1.28 (test release)**, tested with game 1.1, Unity 2022.3.62f2, Windows x64, IL2CPP, and BepInEx 6 be.788.
 
+## Fresh-install bundle (BepInEx included)
+
+New players with an unmodded game 1.1 installation can download **FirstPersonTest-0.1.28-bundle-win-x64.zip** from [Releases](https://github.com/shirakawareine/lillia-first-person/releases/tag/v0.1.28). Exit the game and extract all contents beside `NoviceSuccubusLillia.exe`, then start normally. BepInEx 6 be.788, its runtime, the plugin, and the three ClipLimits entries below are included. First person starts enabled; F8 switches views and F9 toggles hair.
+
+First launch needs Internet access for Unity base libraries and may take several minutes to generate interop files. The console window is disabled; file logs remain available. No game files or generated interop/cache are included. Bundle structure, configuration, and binary hashes have been checked; a clean-install first launch has not been retested in-game.
+
+**Already using BepInEx or other mods? Use the plugin-only package below and keep your configuration.** Extracting this fresh-install bundle over an existing setup can overwrite loader files and settings. The bundle includes third-party notices and corresponding source archives for its LGPL components. See `START-HERE.txt` inside the bundle.
+
 ## Behavior in 0.1.28
 
 - The body faces the viewing direction. W/A/S/D moves relative to the camera independently of facing.
@@ -16,7 +24,7 @@ The animation's stride length is preserved and redirected toward movement input.
 
 **Validation:** compiled against the game's generated assemblies; direction conversion, control restoration, pose ordering, idle behavior, and event simulation checks passed. In-game testing on game 1.1 was reported successful, with subjectively smoother performance. No frame-rate benchmark or exhaustive scene/event testing has been performed.
 
-## Download and installation
+## Plugin-only download and installation
 
 Download `FirstPersonTest-0.1.28-release.zip` from [Releases](https://github.com/shirakawareine/lillia-first-person/releases/tag/v0.1.28). A standalone DLL and source ZIP are also available.
 
@@ -67,7 +75,7 @@ Format: `ClipName|yaw|up|down;OtherClip|yaw|up|down`. Each angle is 0–89°. `0
 
 ### ClipLimits example
 
-**0.1.28 has no built-in per-animation limits. On a fresh installation, ClipLimits is empty.** Default general limits are 75° left/right, 75° up, and 85° down; your changes to the settings override these defaults. Installing the DLL alone does not add the restrictions below.
+**The plugin DLL has no built-in per-animation limits. With the plugin-only package, a newly generated ClipLimits is empty. The fresh-install bundle already includes the three entries below.** Default general limits are 75° left/right, 75° up, and 85° down; your changes to the settings override these defaults. Installing the DLL alone does not add the restrictions below.
 
 1. Run the game once with the plugin to generate its configuration, then exit.
 2. Find the existing `[EventView]` section in `BepInEx/config/local.lillia.firstpersontest.cfg`.
@@ -127,7 +135,7 @@ Use an SDK supporting .NET 6 and the game's generated BepInEx `core` and `intero
 dotnet build .\FirstPersonTest.csproj -c Release '-p:BepInExDir=D:\Games\Lillia\BepInEx'
 ```
 
-Output: `bin/Release/net6.0/FirstPersonTest.dll`. Game assemblies, assets, and BepInEx dependencies are not distributed. See [IMPLEMENTATION.md](IMPLEMENTATION.md) for implementation notes.
+Output: `bin/Release/net6.0/FirstPersonTest.dll`. The source ZIP does not include game assemblies, assets, or BepInEx dependencies. See [IMPLEMENTATION.md](IMPLEMENTATION.md) for implementation notes.
 
 ## Uninstall
 

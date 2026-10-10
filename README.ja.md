@@ -4,6 +4,14 @@
 
 **Novice Succubus Lillia** に切り替え可能な一人称視点を追加する非公式プラグインです。現在のバージョンは **0.1.28（テスト版）**。ゲーム 1.1、Unity 2022.3.62f2、Windows x64、IL2CPP、BepInEx 6 be.788 で動作確認しています。
 
+## 新規導入セット（BepInEx 同梱）
+
+MOD 未導入のゲーム 1.1 には、[Releases](https://github.com/shirakawareine/lillia-first-person/releases/tag/v0.1.28) の **FirstPersonTest-0.1.28-bundle-win-x64.zip** を使えます。ゲームを終了し、全内容を `NoviceSuccubusLillia.exe` と同じフォルダーへ展開して通常どおり起動してください。BepInEx 6 be.788、ランタイム、プラグイン、下記 3 クリップの ClipLimits を同梱しています。初期状態で一人称が有効です。F8 で視点、F9 で髪の表示を切り替えます。
+
+初回は Unity 基礎ライブラリのダウンロードにインターネット接続が必要で、interop の生成に数分かかる場合があります。コンソールは表示せず、ログはファイルに保存します。ゲーム本体や生成済み interop・キャッシュは含みません。構成、設定、バイナリのハッシュは検証済みですが、クリーンな環境での初回起動は再検証していません。
+
+**BepInEx や他の MOD を導入済みの場合は、下記のプラグイン単体版を使い、既存設定を残してください。** このセットを上書きするとローダーや設定が置き換わります。第三者ライセンスと LGPL コンポーネントの対応ソースを同梱しています。セット内の `START-HERE.txt` も参照してください。
+
 ## 0.1.28 の動作
 
 - 体は視線の方向を向き、W/A/S/D は視線を基準とした移動だけを操作します。
@@ -17,7 +25,7 @@
 
 **検証状況：** ゲームから生成されたアセンブリを使ってビルドし、方向変換、制御の復元、姿勢更新順序、待機・イベントのシミュレーションテストに合格しています。ゲーム 1.1 での実機確認では正常動作と体感上の滑らかさの改善が報告されています。フレームレートの測定や全シーン・全イベントの確認は行っていません。
 
-## ダウンロードと導入
+## プラグイン単体版のダウンロードと導入
 
 [Releases](https://github.com/shirakawareine/lillia-first-person/releases/tag/v0.1.28) から `FirstPersonTest-0.1.28-release.zip` をダウンロードしてください。DLL 単体とソース ZIP もあります。
 
@@ -68,7 +76,7 @@
 
 ### ClipLimits の設定例
 
-**0.1.28 にはアニメーション別の制限が内蔵されておらず、初回の ClipLimits は空欄です。** 初期設定では全クリップに左右各 75°、上 75°、下 85° の共通範囲が使われます。設定を変更した場合はその値が適用されます。DLL を入れるだけでは、以下の制限は追加されません。
+**DLL 自体にクリップ別の制限は内蔵されておらず、単体版で新規生成する ClipLimits は空欄です。新規導入セットには下記 3 件を設定済みです。** 初期設定では全クリップに左右各 75°、上 75°、下 85° の共通範囲が使われます。設定を変更した場合はその値が適用されます。DLL を入れるだけでは、以下の制限は追加されません。
 
 1. プラグインを入れて一度起動し、設定ファイル生成後に終了します。
 2. `BepInEx/config/local.lillia.firstpersontest.cfg` の既存の `[EventView]` を探します。
@@ -128,7 +136,7 @@ ClipLimits = Fellatio_Female_Loop|3|2|2;Fellatio_Female(bellied man)_Loop|3|2|2;
 dotnet build .\FirstPersonTest.csproj -c Release '-p:BepInExDir=D:\Games\Lillia\BepInEx'
 ```
 
-出力先は `bin/Release/net6.0/FirstPersonTest.dll` です。ゲームのアセンブリ、素材、BepInEx 依存ファイルは配布しません。実装メモは [IMPLEMENTATION.ja.md](IMPLEMENTATION.ja.md)を参照してください。
+出力先は `bin/Release/net6.0/FirstPersonTest.dll` です。ソース ZIP にゲームのアセンブリ、素材、BepInEx 依存ファイルは含みません。実装メモは [IMPLEMENTATION.ja.md](IMPLEMENTATION.ja.md)を参照してください。
 
 ## アンインストール
 

@@ -1,0 +1,22 @@
+# Fresh-install preset for First Person Test 0.1.28.
+# Existing players: keep your own configuration when updating.
+[Body]
+HideHairOnStart = false
+FollowCameraYaw = true
+FollowHeadPitch = true
+ShowPlayerRenderers = true
+HideHeadInFirstPerson = true
+NearClip = 0.02
+HeadMaterialSlots =
+
+[EventView]
+DefaultYaw = 75
+Sensitivity = 2
+ClipLimits = Fellatio_Female_Loop|3|2|2;Fellatio_Female(bellied man)_Loop|3|2|2;Fellatio_Female_End|3|2|2
+
+[View]
+LookUpDegrees = 75
+LookDownDegrees = 85
+PitchSensitivity = 3
+InvertY = false
+EyeHeightAdjustment = -0.01
