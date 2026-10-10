@@ -2,7 +2,7 @@
 
 [English](README.md) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md)
 
-為《見習莉莉婭》（Novice Succubus Lillia）加入可切換的第一人稱視角，屬於非官方外掛。目前為 **0.1.28 測試版**，已在遊戲 1.1、Unity 2022.3.62f2、Windows x64、IL2CPP、BepInEx 6 be.788 環境測試。
+為《見習莉莉婭》（Novice Succubus Lillia）加入可切換的第一人稱視角，屬於非官方外掛。目前為 **0.1.28 測試版**，已在遊戲 1.1 版本、Unity 2022.3.62f2、Windows x64、IL2CPP、BepInEx 6 be.788 環境測試。
 
 ## 截圖展示
 
@@ -30,7 +30,7 @@
 
 **遊戲目錄路徑：** 建議使用 `C:\Games\Lillia` 等短路徑。測試時，目錄層級過深即使關閉 BepInEx，仍出現 `Character content could not be loaded` / `A local absolute bundle path is required`；相同檔案改放短路徑後成功載入。遇到此錯誤，請結束遊戲，將整個遊戲資料夾移至短路徑。目前尚未確定遊戲支援的精確路徑長度上限。
 
-尚未安裝 MOD 的遊戲 1.1 可從 [Releases](https://github.com/shirakawareine/lillia-first-person/releases/tag/v0.1.28) 下載 **FirstPersonTest-0.1.28-bundle-win-x64.zip**。結束遊戲，將全部內容解壓縮至 `NoviceSuccubusLillia.exe` 所在目錄，再正常啟動。內含 BepInEx 6 be.788、執行階段、外掛，以及下方四個動作的 ClipLimits 預設。預設開啟第一人稱；F8 切換視角，F9 切換頭髮顯示。
+尚未安裝 MOD 的遊戲 1.1 版本 可從 [Releases](https://github.com/shirakawareine/lillia-first-person/releases/tag/v0.1.28) 下載 **FirstPersonTest-0.1.28-bundle-win-x64.zip**。結束遊戲，將全部內容解壓縮至 `NoviceSuccubusLillia.exe` 所在目錄，再正常啟動。內含 BepInEx 6 be.788、執行階段、外掛，以及下方四個動作的 ClipLimits 預設。預設開啟第一人稱；F8 切換視角，F9 切換頭髮顯示。
 
 首次啟動需連網下載 Unity 基礎函式庫並產生 interop，可能需等待數分鐘。已關閉主控台，檔案日誌仍保留。不含遊戲檔案、已產生的 interop 或快取。 乾淨測試副本已完成首次相依項目產生和外掛載入；短路徑下成功進入遊戲，日誌確認了一人稱演出繪製。新增 Gsun 限制已與資源目錄及執行時動作名稱核對，其受限轉動範圍仍待遊戲內確認；尚未完整測試所有場景。
 
@@ -47,7 +47,7 @@
 
 遊戲原本沿身體朝向套用走路動畫的位移。本版保留動畫產生的步幅，將位移轉向輸入方向，再交回遊戲原有的移動控制處理斜坡、碰撞與外力。不替換移動速度、體力、空中移動、重力或遊戲資源。
 
-**驗證狀態：** 已使用遊戲產生的組件完成編譯，並通過方向換算、控制還原、姿勢更新順序、待機與演出模擬測試。遊戲 1.1 的實測回報為正常，且主觀感受較流暢；尚未測量影格率，也未逐一驗證所有場景與演出。
+**驗證狀態：** 已使用遊戲產生的組件完成編譯，並通過方向換算、控制還原、姿勢更新順序、待機與演出模擬測試。遊戲 1.1 版本 的實測回報為正常，且主觀感受較流暢；尚未測量影格率，也未逐一驗證所有場景與演出。
 
 ## 一般外掛包下載與安裝
 
@@ -107,7 +107,7 @@
 3. 將其中的 `ClipLimits =` 一行替換成下方範例。不要重複加入分組或同名設定。整個值保持單行，使用半形 `;` 與 `|`。
 4. 儲存後重新啟動遊戲。
 
-以下設定涵蓋遊戲 1.1 資源目錄中此系列的四個動畫片段，可直接複製：
+以下設定涵蓋遊戲 1.1 版本 資源目錄中此系列的四個動畫片段，可直接複製：
 
 ```ini
 [EventView]

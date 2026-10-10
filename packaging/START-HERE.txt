@@ -26,7 +26,7 @@ BepInEx や他の MOD を導入済みの場合は通常のプラグイン単体�
 ゲームの保存先： C:\Games\Lillia などの短いパスを使用してください。深い階層のテストフォルダーでは、BepInEx 無効時にも Character content could not be loaded / A local absolute bundle path is required が発生し、同じファイルを短いパスに置くと読み込めました。この場合はゲームを終了し、ゲームフォルダー全体を短いパスへ移動してください。対応する最大パス長は未確定です。
 
 简体中文
-1. 保存并退出游戏。本包用于尚未安装加载器的游戏 1.1。
+1. 保存并退出游戏。本包适用于游戏 1.1 版本，供尚未安装 BepInEx 加载器的玩家使用。
 2. 将全部内容解压到 NoviceSuccubusLillia.exe 所在目录，不要放进 Data 文件夹或额外套一层文件夹。
 3. 正常启动游戏。首次启动需要联网下载 Unity 基础库并生成 interop，可能需要等待数分钟，请勿反复启动。
 4. 默认开启第一人称。F8 切换第一／第三人称，F9 隐藏／显示头发。
@@ -38,7 +38,7 @@ BepInEx や他の MOD を導入済みの場合は通常のプラグイン単体�
 游戏目录路径： 建议使用 C:\Games\Lillia 等短路径。测试中，目录层级过深时，即使关闭 BepInEx 也会出现 Character content could not be loaded / A local absolute bundle path is required；同一份文件换到短路径后成功加载。遇到此错误，请退出游戏，将整个游戏文件夹移到短路径。尚未确定游戏支持的精确路径长度上限。
 
 繁體中文
-1. 存檔並結束遊戲。本包適用於尚未安裝載入器的遊戲 1.1。
+1. 存檔並結束遊戲。本包適用於遊戲 1.1 版本，供尚未安裝 BepInEx 載入器的玩家使用。
 2. 將全部內容解壓縮至 NoviceSuccubusLillia.exe 所在目錄，不要放入 Data 資料夾或多套一層資料夾。
 3. 正常啟動遊戲。首次啟動需連網下載 Unity 基礎函式庫並產生 interop，可能需等待數分鐘，請勿重複啟動。
 4. 預設開啟第一人稱。F8 切換第一／第三人稱，F9 隱藏／顯示頭髮。
