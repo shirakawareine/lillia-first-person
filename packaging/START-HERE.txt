@@ -1,50 +1,242 @@
-Lillia First Person 0.1.28 - Windows x64 fresh-install bundle
+Lillia First Person 0.1.28 — Windows x64 / BepInEx IL2CPP
 English / 日本語 / 简体中文 / 繁體中文
 
-ENGLISH
-1. Save and exit the game. This bundle is intended for a fresh game 1.1 installation without an existing mod loader.
-2. Extract ALL contents directly beside NoviceSuccubusLillia.exe (not into its Data folder or an extra nested folder).
-3. Start the game normally. First launch needs Internet access to download Unity base libraries and generate interop files. It may take several minutes; do not repeatedly launch the game.
-4. First person is enabled by default. F8 toggles first/third person; F9 toggles hair visibility.
-The four recommended ClipLimits entries are already configured (3 degrees left/right, 2 up/down). Other animations use 75 left/right, 75 up, 85 down. If NPCs block an event view, press F8.
-Already using BepInEx or other mods? Use the plugin-only release instead; do not overwrite your loader, winhttp.dll, or configuration with this fresh-install bundle. Existing settings would be overwritten by extraction.
-Troubleshooting: BepInEx/LogOutput.log and BepInEx/FirstPersonTest.log. No console window is expected. Documentation: LilliaFirstPerson-Docs/README.md.
-Remove only BepInEx/plugins/FirstPersonTest.dll to uninstall this plugin. Do not delete shared loader files used by other mods.
-First-launch dependency generation and plugin loading completed in the clean test copy. The game loaded from a short path, and first-person event rendering was confirmed in the logs. The newly added Gsun limit matches the catalog and runtime clip name; its restricted movement still needs in-game confirmation. This is not exhaustive gameplay validation.
-Game folder path: Use a short folder such as C:\Games\Lillia. A deeply nested test folder failed with Character content could not be loaded and A local absolute bundle path is required, even with BepInEx disabled; the same files loaded successfully from a shorter folder. If this happens, exit the game and move the entire game folder to a shorter path. The exact maximum supported path length is not established.
+## Installation and troubleshooting
 
-日本語
-1. セーブしてゲームを終了します。このセットは、ローダー未導入のゲーム 1.1 への新規導入用です。
-2. 全ファイルを NoviceSuccubusLillia.exe と同じフォルダーへ展開します。Data フォルダーや余分なサブフォルダーには入れないでください。
-3. 通常どおり起動します。初回は Unity 基礎ライブラリのダウンロードと interop 生成のため、インターネット接続と数分の待ち時間が必要な場合があります。繰り返し起動しないでください。
-4. 初期状態で一人称が有効です。F8 で一人称／三人称、F9 で髪の表示を切り替えます。
-推奨する 4 クリップの ClipLimits は設定済み（左右各 3°、上下各 2°）。その他は左右各 75°、上 75°、下 85°。イベントで NPC に遮られたら F8 を押してください。
-BepInEx や他の MOD を導入済みの場合は通常のプラグイン単体版を使い、既存のローダー、winhttp.dll、設定を上書きしないでください。
-ログ：BepInEx/LogOutput.log、BepInEx/FirstPersonTest.log。コンソールは表示しません。説明：LilliaFirstPerson-Docs/README.ja.md。
-削除するのは BepInEx/plugins/FirstPersonTest.dll のみで構いません。他の MOD が使うローダーを削除しないでください。
-クリーンなテスト用コピーで初回の依存関係生成とプラグイン読み込みが完了しました。短いパスでゲームが起動し、一人称イベント描画をログで確認しました。追加した Gsun 制限はカタログと実行時のクリップ名に一致しますが、可動範囲の実機確認はまだ必要です。全場面を検証したものではありません。
-ゲームの保存先： C:\Games\Lillia などの短いパスを使用してください。深い階層のテストフォルダーでは、BepInEx 無効時にも Character content could not be loaded / A local absolute bundle path is required が発生し、同じファイルを短いパスに置くと読み込めました。この場合はゲームを終了し、ゲームフォルダー全体を短いパスへ移動してください。対応する最大パス長は未確定です。
+### Choose by installed components
 
-简体中文
-1. 保存并退出游戏。本包适用于游戏 1.1 版本，供尚未安装 BepInEx 加载器的玩家使用。
-2. 将全部内容解压到 NoviceSuccubusLillia.exe 所在目录，不要放进 Data 文件夹或额外套一层文件夹。
-3. 正常启动游戏。首次启动需要联网下载 Unity 基础库并生成 interop，可能需要等待数分钟，请勿反复启动。
-4. 默认开启第一人称。F8 切换第一／第三人称，F9 隐藏／显示头发。
-四个推荐动作的 ClipLimits 已配置好（左右各 3°、上下各 2°）；其他动作使用左右各 75°、上 75°、下 85°。演出被 NPC 挡住时按 F8。
-已安装 BepInEx 或其他 MOD 的玩家请使用普通插件包，不要用本包覆盖原有加载器、winhttp.dll 或配置；直接覆盖解压会替换已有设置。
-排错日志：BepInEx/LogOutput.log、BepInEx/FirstPersonTest.log。不弹日志控制台属于正常设置。说明：LilliaFirstPerson-Docs/README.zh-CN.md。
-卸载插件只需删除 BepInEx/plugins/FirstPersonTest.dll，不要删除其他 MOD 共用的加载器。
-干净测试副本已完成首次依赖生成和插件加载；短路径下成功进入游戏，日志确认了第一人称演出渲染。新增 Gsun 限制已与资源目录及运行时动作名核对，其受限转动范围仍待游戏内确认；尚未穷尽所有场景测试。
-游戏目录路径： 建议使用 C:\Games\Lillia 等短路径。测试中，目录层级过深时，即使关闭 BepInEx 也会出现 Character content could not be loaded / A local absolute bundle path is required；同一份文件换到短路径后成功加载。遇到此错误，请退出游戏，将整个游戏文件夹移到短路径。尚未确定游戏支持的精确路径长度上限。
+Use game **version 1.1**, Windows x64. The bundle contains BepInEx **6 be.788 for IL2CPP x64**; Mono, x86 and BepInEx 5 packages are not substitutes. It does not include the game.
 
-繁體中文
-1. 存檔並結束遊戲。本包適用於遊戲 1.1 版本，供尚未安裝 BepInEx 載入器的玩家使用。
-2. 將全部內容解壓縮至 NoviceSuccubusLillia.exe 所在目錄，不要放入 Data 資料夾或多套一層資料夾。
-3. 正常啟動遊戲。首次啟動需連網下載 Unity 基礎函式庫並產生 interop，可能需等待數分鐘，請勿重複啟動。
-4. 預設開啟第一人稱。F8 切換第一／第三人稱，F9 隱藏／顯示頭髮。
-四個推薦動作的 ClipLimits 已設定好（左右各 3°、上下各 2°）；其他動作為左右各 75°、上 75°、下 85°。演出被 NPC 遮住時按 F8。
-已安裝 BepInEx 或其他 MOD 者請使用一般外掛包，不要覆蓋原有載入器、winhttp.dll 或設定；直接覆蓋解壓縮會取代既有設定。
-排錯日誌：BepInEx/LogOutput.log、BepInEx/FirstPersonTest.log。不顯示主控台是正常設定。說明：LilliaFirstPerson-Docs/README.zh-TW.md。
-移除外掛只需刪除 BepInEx/plugins/FirstPersonTest.dll，不要刪除其他 MOD 共用的載入器。
-乾淨測試副本已完成首次相依項目產生和外掛載入；短路徑下成功進入遊戲，日誌確認了一人稱演出繪製。新增 Gsun 限制已與資源目錄及執行時動作名稱核對，其受限轉動範圍仍待遊戲內確認；尚未完整測試所有場景。
-遊戲目錄路徑： 建議使用 C:\Games\Lillia 等短路徑。測試時，目錄層級過深即使關閉 BepInEx，仍出現 Character content could not be loaded / A local absolute bundle path is required；相同檔案改放短路徑後成功載入。遇到此錯誤，請結束遊戲，將整個遊戲資料夾移至短路徑。目前尚未確定遊戲支援的精確路徑長度上限。
+- **BepInEx not installed:** download `FirstPersonTest-0.1.28-bundle-win-x64.zip` from [Releases](https://github.com/shirakawareine/lillia-first-person/releases/tag/v0.1.28).
+- **Compatible BepInEx already installed:** download `FirstPersonTest-0.1.28-release.zip` or `FirstPersonTest.dll`, and keep the existing loader and settings.
+- **Source code:** `FirstPersonTest-0.1.28-source.zip` is for building the plugin, not installing it. GitHub's automatic source archives are not installation packages either.
+
+Check the game folder for `BepInEx` and `winhttp.dll`. Their presence indicates an existing loader or modification that needs checking; do not blindly overwrite it. Confirm the BepInEx version and IL2CPP runtime in `BepInEx/LogOutput.log` when available.
+
+### Bundle installation (BepInEx not installed)
+
+1. Save and exit the game. Back up saves and any existing configuration before changing the installation.
+2. Use a short game path such as `C:\Games\Lillia`. Move the **whole game folder**, not just the EXE, if needed. A deeply nested test copy failed to load character content even without BepInEx; the same files worked at a shorter path. The exact path-length threshold is unknown.
+3. Extract **all contents** of the bundle beside `NoviceSuccubusLillia.exe`. Do not run the game inside an archive, extract into the Data folder, or leave an extra bundle folder between the EXE and the loader files.
+4. Compare the layout below. The EXE and Data folder are supplied by your game installation; the bundle adds the loader, runtime, plugin and configuration.
+
+```text
+C:\Games\Lillia\
+  NoviceSuccubusLillia.exe
+  NoviceSuccubusLillia_Data\
+  winhttp.dll
+  doorstop_config.ini
+  dotnet\
+  BepInEx\
+    core\
+    plugins\FirstPersonTest.dll
+    config\BepInEx.cfg
+    config\local.lillia.firstpersontest.cfg
+```
+
+5. Launch the usual game EXE. First launch needs Internet access to download Unity base libraries and time to generate `BepInEx/interop`; several minutes may be needed. Do not launch multiple copies while waiting. No log console window is expected.
+6. Enter normal gameplay. First person starts enabled. With the game focused, test **F8** to switch views and **F9** to hide/show hair. The plugin log should contain `Loaded v0.1.28`. Successful loading alone does not verify every gameplay feature.
+
+### Plugin installation or update (BepInEx installed)
+
+1. Save and exit. Back up the old DLL and `BepInEx/config/local.lillia.firstpersontest.cfg` outside the `plugins` folder.
+2. Replace `BepInEx/plugins/FirstPersonTest.dll`. Keep only one copy, including in subfolders; do not leave backup DLLs there. Keep your existing loader and configuration.
+3. On first plugin-only installation, launch once to generate the configuration, then exit. A newly generated `ClipLimits` is empty; the bundle already contains four presets.
+4. Updating the DLL does **not** merge new presets into existing settings. In `[EventView]`, merge the four-entry example in the bundled README into the existing `ClipLimits` line, keeping custom entries. Use one entry per exact clip name and keep the whole value on one line. The added Gsun entry is `Fellatio_Female(Gsun)_Loop|3|2|2`.
+5. Save and restart. Configuration is read at startup. The bundle revision changes presets and documentation, not the 0.1.28 DLL.
+
+### Troubleshooting
+
+| Symptom | Check first |
+| --- | --- |
+| No first-person view or no F8 response | Enter gameplay, focus the game window, check the folder layout and duplicate DLLs. Then check loader and plugin logs for a successful load or an error. |
+| First launch appears stuck | Check whether `BepInEx/LogOutput.log` is still progressing through downloads or interop generation. If it reports a download failure, check connectivity and the specific error before retrying; do not repeatedly start extra copies. |
+| `Character content could not be loaded` | Look for `A local absolute bundle path is required` in the Unity player log. If present, exit and move the entire game to a shorter path. The message alone does not prove a path issue; preserve logs if it persists. |
+| Event view still has a wide range | Check the exact `Event view: clip=...` name, the matching ClipLimits entry and whether you restarted. Names are case-sensitive; unknown clips use general limits. |
+| Hair or an NPC blocks the view | F9 toggles hair; F8 returns to third person during obstructed scenes. |
+
+Loader log: `BepInEx/LogOutput.log`. Plugin log: `BepInEx/FirstPersonTest.log`. Unity log: `%USERPROFILE%\AppData\LocalLow\PaconeSoft\Novice Succubus Lillia\Player.log`. Preserve relevant logs before another launch; do not clear saves or caches as a routine installation step.
+
+To temporarily disable first person, press F8. To uninstall the plugin, exit and remove only `BepInEx/plugins/FirstPersonTest.dll`; keep shared loader files needed by other mods. To roll back, restore the backed-up DLL and configuration. `SHA256SUMS.txt` provides download checksums.
+
+Documentation: LilliaFirstPerson-Docs/README.md
+
+## 安装步骤与常见问题
+
+### 按已安装的组件选择下载
+
+适用环境为游戏 **1.1 版本**、Windows x64。整合包使用 **BepInEx 6 be.788 IL2CPP x64**；Mono、x86 和 BepInEx 5 版本不能替代。不包含游戏本体。
+
+- **未安装 BepInEx：** 从 [Releases](https://github.com/shirakawareine/lillia-first-person/releases/tag/v0.1.28) 下载 `FirstPersonTest-0.1.28-bundle-win-x64.zip`。
+- **已安装兼容的 BepInEx：** 下载 `FirstPersonTest-0.1.28-release.zip` 或 `FirstPersonTest.dll`，保留已有加载器与配置。
+- **源码：** `FirstPersonTest-0.1.28-source.zip` 用于编译插件，不是安装包；GitHub 自动生成的源码压缩包也不是安装包。
+
+先查看游戏目录是否已有 `BepInEx` 文件夹或 `winhttp.dll`。存在这些文件说明可能已安装加载器或其他修改，应先核对，不能直接覆盖；可在已有的 `BepInEx/LogOutput.log` 中确认 BepInEx 版本和 IL2CPP 运行环境。
+
+### 整合包安装（未安装 BepInEx）
+
+1. 保存并退出游戏。修改安装目录前，备份存档和已有配置。
+2. 建议使用 `C:\Games\Lillia` 等短路径，需要调整时移动**整个游戏文件夹**，不要只移动 EXE。测试中深层目录即使未启用 BepInEx 也无法加载角色，相同文件改放短路径后成功；尚未确定精确的长度上限。
+3. 将整合包的**全部内容**解压到 `NoviceSuccubusLillia.exe` 旁边。不要在压缩包内启动，不要解压到 Data 文件夹，也不要让加载器文件与 EXE 之间多套一层整合包文件夹。
+4. 对照下列目录。EXE 和 Data 文件夹来自游戏本体；整合包提供加载器、运行时、插件与配置。
+
+```text
+C:\Games\Lillia\
+  NoviceSuccubusLillia.exe
+  NoviceSuccubusLillia_Data\
+  winhttp.dll
+  doorstop_config.ini
+  dotnet\
+  BepInEx\
+    core\
+    plugins\FirstPersonTest.dll
+    config\BepInEx.cfg
+    config\local.lillia.firstpersontest.cfg
+```
+
+5. 启动平时使用的游戏 EXE。首次需要联网下载 Unity 基础库并生成 `BepInEx/interop`，可能需要数分钟。等待时不要重复启动多个游戏进程。没有弹出日志控制台属于正常设置。
+6. 进入正式游戏后，第一人称默认开启。在游戏窗口处于前台时，测试 **F8** 切换视角、**F9** 隐藏／显示头发。插件日志应出现 `Loaded v0.1.28`；加载成功不等于所有游戏功能都已经验证。
+
+### 插件安装与更新（已安装 BepInEx）
+
+1. 保存并退出。将旧 DLL 和 `BepInEx/config/local.lillia.firstpersontest.cfg` 备份到 `plugins` 文件夹以外的位置。
+2. 替换 `BepInEx/plugins/FirstPersonTest.dll`。包括子文件夹在内只保留一份插件，备份 DLL 不要留在其中。保留已有加载器和配置。
+3. 首次单独安装插件时，先运行一次生成配置，再退出。新生成的 `ClipLimits` 为空；整合包则已带四条预设。
+4. 替换 DLL **不会**自动合并新增预设。在 `[EventView]` 中，把包内 README 的四条示例合并到现有的 `ClipLimits` 一行，保留自定义条目。每个精确动作名只出现一次，整个值保持一行。本次新增的是 `Fellatio_Female(Gsun)_Loop|3|2|2`。
+5. 保存并重启游戏，配置在启动时读取。本次整合包修订只更新预设与说明，0.1.28 DLL 未改变。
+
+### 常见问题
+
+| 现象 | 优先检查 |
+| --- | --- |
+| 没有第一人称，或 F8 无反应 | 先进入正式游戏并让游戏窗口处于前台，核对目录层级和重复 DLL，再查看加载器、插件日志是否成功加载或报错。 |
+| 首次启动看似卡住 | 查看 `BepInEx/LogOutput.log` 是否仍在下载或生成 interop；若报告下载失败，按具体错误检查网络后再试，不要反复启动更多进程。 |
+| `Character content could not be loaded` | 在 Unity 日志中查找 `A local absolute bundle path is required`；如有，退出并把整个游戏移到短路径。单凭界面提示不能断定是路径问题，仍失败时保留日志。 |
+| 演出视角仍能大幅转动 | 核对日志 `Event view: clip=...` 的精确名称、对应 ClipLimits 条目以及是否重启；名称区分大小写，未匹配动作使用通用范围。 |
+| 头发或 NPC 挡住视线 | F9 切换头发显示；演出被遮挡时用 F8 切回第三人称。 |
+
+加载器日志：`BepInEx/LogOutput.log`；插件日志：`BepInEx/FirstPersonTest.log`；Unity 日志：`%USERPROFILE%\AppData\LocalLow\PaconeSoft\Novice Succubus Lillia\Player.log`。再次启动前保存需要排查的日志，不要把删除存档或缓存当作常规安装步骤。
+
+临时关闭第一人称可按 F8。卸载插件时，退出游戏，只删除 `BepInEx/plugins/FirstPersonTest.dll`，保留其他 MOD 共用的加载器。回退时恢复备份的 DLL 与配置。下载文件可用 `SHA256SUMS.txt` 核对。
+
+Documentation: LilliaFirstPerson-Docs/README.zh-CN.md
+
+## 安裝步驟與常見問題
+
+### 按已安裝的元件選擇下載
+
+適用環境為遊戲 **1.1 版本**、Windows x64。整合包使用 **BepInEx 6 be.788 IL2CPP x64**；Mono、x86 和 BepInEx 5 版本不能替代。不包含遊戲本體。
+
+- **未安裝 BepInEx：** 從 [Releases](https://github.com/shirakawareine/lillia-first-person/releases/tag/v0.1.28) 下載 `FirstPersonTest-0.1.28-bundle-win-x64.zip`。
+- **已安裝相容的 BepInEx：** 下載 `FirstPersonTest-0.1.28-release.zip` 或 `FirstPersonTest.dll`，保留既有載入器與設定。
+- **原始碼：** `FirstPersonTest-0.1.28-source.zip` 用於編譯外掛，並非安裝包；GitHub 自動產生的原始碼壓縮檔也不是安裝包。
+
+先查看遊戲目錄是否已有 `BepInEx` 資料夾或 `winhttp.dll`。這些檔案表示可能已安裝載入器或其他修改，應先核對，不要直接覆蓋；可在既有的 `BepInEx/LogOutput.log` 中確認 BepInEx 版本與 IL2CPP 執行環境。
+
+### 整合包安裝（未安裝 BepInEx）
+
+1. 存檔並結束遊戲。修改安裝目錄前，備份存檔與既有設定。
+2. 建議使用 `C:\Games\Lillia` 等短路徑，需要調整時移動**整個遊戲資料夾**，不要只移動 EXE。測試時深層目錄即使未啟用 BepInEx 也無法載入角色，相同檔案改放短路徑後成功；尚未確定精確的長度上限。
+3. 將整合包的**全部內容**解壓縮至 `NoviceSuccubusLillia.exe` 旁。不要在壓縮檔內啟動，不要放進 Data 資料夾，也不要讓載入器檔案與 EXE 之間多套一層整合包資料夾。
+4. 對照下列目錄。EXE 與 Data 資料夾來自遊戲本體；整合包提供載入器、執行階段、外掛與設定。
+
+```text
+C:\Games\Lillia\
+  NoviceSuccubusLillia.exe
+  NoviceSuccubusLillia_Data\
+  winhttp.dll
+  doorstop_config.ini
+  dotnet\
+  BepInEx\
+    core\
+    plugins\FirstPersonTest.dll
+    config\BepInEx.cfg
+    config\local.lillia.firstpersontest.cfg
+```
+
+5. 啟動平常使用的遊戲 EXE。首次需連網下載 Unity 基礎函式庫並產生 `BepInEx/interop`，可能需要數分鐘。等待時不要重複啟動多個遊戲程序。不顯示日誌主控台是正常設定。
+6. 進入正式遊戲後，預設開啟第一人稱。在遊戲視窗位於前景時，測試 **F8** 切換視角、**F9** 隱藏／顯示頭髮。外掛日誌應出現 `Loaded v0.1.28`；載入成功不代表所有功能皆已驗證。
+
+### 外掛安裝與更新（已安裝 BepInEx）
+
+1. 存檔並結束遊戲。將舊 DLL 與 `BepInEx/config/local.lillia.firstpersontest.cfg` 備份至 `plugins` 資料夾以外的位置。
+2. 替換 `BepInEx/plugins/FirstPersonTest.dll`。包含子資料夾在內只保留一份外掛，備份 DLL 不要留在其中。保留既有載入器與設定。
+3. 首次單獨安裝外掛時，先執行一次以產生設定，再結束遊戲。新產生的 `ClipLimits` 為空白；整合包則已包含四條預設。
+4. 替換 DLL **不會**自動合併新增預設。在 `[EventView]` 中，把包內 README 的四條範例合併至既有的 `ClipLimits` 一行，保留自訂項目。每個精確動作名稱只出現一次，整個值維持一行。本次新增的是 `Fellatio_Female(Gsun)_Loop|3|2|2`。
+5. 儲存並重新啟動遊戲，設定在啟動時讀取。本次整合包修訂只更新預設與說明，0.1.28 DLL 未改變。
+
+### 常見問題
+
+| 現象 | 優先檢查 |
+| --- | --- |
+| 沒有第一人稱，或 F8 無反應 | 先進入正式遊戲並讓遊戲視窗位於前景，核對目錄層級與重複 DLL，再查看載入器、外掛日誌是否成功載入或報錯。 |
+| 首次啟動看似停住 | 查看 `BepInEx/LogOutput.log` 是否仍在下載或產生 interop；若回報下載失敗，按具體錯誤檢查網路後再試，不要反覆啟動更多程序。 |
+| `Character content could not be loaded` | 在 Unity 日誌查找 `A local absolute bundle path is required`；若有，結束遊戲並將整個遊戲移至短路徑。僅憑畫面提示不能斷定是路徑問題，仍失敗時保留日誌。 |
+| 演出視角仍能大幅轉動 | 核對日誌 `Event view: clip=...` 的精確名稱、對應 ClipLimits 項目與是否重新啟動；名稱區分大小寫，未匹配的動作使用通用範圍。 |
+| 頭髮或 NPC 遮住視線 | F9 切換頭髮顯示；演出遭遮擋時用 F8 切回第三人稱。 |
+
+載入器日誌：`BepInEx/LogOutput.log`；外掛日誌：`BepInEx/FirstPersonTest.log`；Unity 日誌：`%USERPROFILE%\AppData\LocalLow\PaconeSoft\Novice Succubus Lillia\Player.log`。再次啟動前保存需要排查的日誌，不要將刪除存檔或快取當作一般安裝步驟。
+
+暫時關閉第一人稱可按 F8。移除外掛時，結束遊戲，只刪除 `BepInEx/plugins/FirstPersonTest.dll`，保留其他 MOD 共用的載入器。回復舊版時還原備份的 DLL 與設定。下載檔案可用 `SHA256SUMS.txt` 核對。
+
+Documentation: LilliaFirstPerson-Docs/README.zh-TW.md
+
+## インストール手順とトラブル対処
+
+### 導入済みの構成に応じたダウンロード
+
+対象はゲーム **バージョン 1.1**、Windows x64 です。同梱ローダーは **BepInEx 6 be.788 IL2CPP x64** です。Mono、x86、BepInEx 5 版で代用しないでください。ゲーム本体は含まれません。
+
+- **BepInEx 未導入：** [Releases](https://github.com/shirakawareine/lillia-first-person/releases/tag/v0.1.28) から `FirstPersonTest-0.1.28-bundle-win-x64.zip` をダウンロードします。
+- **対応する BepInEx を導入済み：** `FirstPersonTest-0.1.28-release.zip` または `FirstPersonTest.dll` を使用し、既存ローダーと設定を残します。
+- **ソース：** `FirstPersonTest-0.1.28-source.zip` はビルド用であり、インストール用ではありません。GitHub 自動生成のソースアーカイブも同様です。
+
+ゲームフォルダーに `BepInEx` や `winhttp.dll` があるか確認してください。既存ローダーや別の変更がある可能性があるため、確認せず上書きしないでください。既存の `BepInEx/LogOutput.log` があれば、BepInEx バージョンと IL2CPP 実行環境を確認できます。
+
+### 同梱セットの導入（BepInEx 未導入）
+
+1. セーブしてゲームを終了します。変更前にセーブと既存設定をバックアップしてください。
+2. `C:\Games\Lillia` など短いパスを使用します。必要なら EXE だけでなく**ゲームフォルダー全体**を移動してください。深い階層では BepInEx 無効時もキャラクター読み込みが失敗し、同じファイルを短いパスに置くと成功しました。正確なパス長の上限は未確定です。
+3. セットの**全内容**を `NoviceSuccubusLillia.exe` と同じ場所に展開します。圧縮ファイル内から起動したり、Data フォルダーに入れたり、EXE とローダーの間に余分なフォルダーを挟んだりしないでください。
+4. 以下の配置と照合します。EXE と Data フォルダーはゲーム本体のもので、セットはローダー、ランタイム、プラグイン、設定を追加します。
+
+```text
+C:\Games\Lillia\
+  NoviceSuccubusLillia.exe
+  NoviceSuccubusLillia_Data\
+  winhttp.dll
+  doorstop_config.ini
+  dotnet\
+  BepInEx\
+    core\
+    plugins\FirstPersonTest.dll
+    config\BepInEx.cfg
+    config\local.lillia.firstpersontest.cfg
+```
+
+5. 普段のゲーム EXE を起動します。初回はネット接続で Unity 基礎ライブラリを取得し、`BepInEx/interop` を生成するため、数分かかる場合があります。待機中に複数のゲームを起動しないでください。ログ用コンソールが表示されないのは正常です。
+6. ゲームプレイに入ると一人称が初期状態で有効です。ゲームを前面にして **F8** の視点切替、**F9** の髪の表示切替を確認します。プラグインログには `Loaded v0.1.28` が記録されます。読み込み成功だけで全機能の動作が確認できるわけではありません。
+
+### プラグインの導入・更新（BepInEx 導入済み）
+
+1. セーブして終了し、古い DLL と `BepInEx/config/local.lillia.firstpersontest.cfg` を `plugins` の外へバックアップします。
+2. `BepInEx/plugins/FirstPersonTest.dll` を置き換えます。サブフォルダーも含めて一つだけにし、バックアップ DLL を残さないでください。既存ローダーと設定は保持します。
+3. 単体プラグインの初回導入では一度起動して設定を生成し、終了します。生成直後の `ClipLimits` は空欄ですが、同梱セットには 4 項目が設定済みです。
+4. DLL の更新だけでは新しい設定例は**自動追加されません**。`[EventView]` の既存 `ClipLimits` 一行に、同梱 README の 4 項目の例を統合し、自分の設定も残します。同じクリップ名は一度だけ記述し、値全体を一行に保ちます。今回の追加は `Fellatio_Female(Gsun)_Loop|3|2|2` です。
+5. 保存してゲームを再起動してください。設定は起動時に読み込まれます。今回のセット改訂は設定と説明のみで、0.1.28 DLL は変更していません。
+
+### トラブル対処
+
+| 症状 | 最初に確認すること |
+| --- | --- |
+| 一人称にならない／F8 が反応しない | ゲームプレイに入り、ウィンドウを前面にします。フォルダー階層と DLL の重複を確認し、ローダー・プラグインログの読み込み結果やエラーを調べます。 |
+| 初回起動が止まって見える | `BepInEx/LogOutput.log` でダウンロードや interop 生成が進んでいるか確認します。取得失敗なら具体的なエラーと接続を確認してから再試行し、起動を繰り返さないでください。 |
+| `Character content could not be loaded` | Unity ログの `A local absolute bundle path is required` を探します。あれば終了してゲーム全体を短いパスへ移動します。画面の表示だけではパスが原因と断定できません。続く場合はログを保存してください。 |
+| イベント視点の可動範囲が広い | `Event view: clip=...` の正確な名前、対応する ClipLimits、再起動の有無を確認します。大文字・小文字を区別し、未一致のクリップには共通範囲が適用されます。 |
+| 髪や NPC が視界を遮る | F9 で髪を切り替え、遮られるイベントでは F8 で三人称に戻します。 |
+
+ローダーログ：`BepInEx/LogOutput.log`。プラグインログ：`BepInEx/FirstPersonTest.log`。Unity ログ：`%USERPROFILE%\AppData\LocalLow\PaconeSoft\Novice Succubus Lillia\Player.log`。再起動前に必要なログを保存し、通常の導入手順としてセーブやキャッシュを削除しないでください。
+
+一時停止は F8、アンインストールはゲーム終了後に `BepInEx/plugins/FirstPersonTest.dll` のみを削除します。他の MOD が使うローダーは残してください。旧版へ戻す場合はバックアップした DLL と設定を復元します。ダウンロードの照合には `SHA256SUMS.txt` を使えます。
+
+Documentation: LilliaFirstPerson-Docs/README.ja.md

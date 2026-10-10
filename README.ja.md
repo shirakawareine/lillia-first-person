@@ -4,6 +4,64 @@
 
 **Novice Succubus Lillia** に切り替え可能な一人称視点を追加する非公式プラグインです。現在のバージョンは **0.1.28（テスト版）**。ゲーム 1.1、Unity 2022.3.62f2、Windows x64、IL2CPP、BepInEx 6 be.788 で動作確認しています。
 
+## インストール手順とトラブル対処
+
+### 導入済みの構成に応じたダウンロード
+
+対象はゲーム **バージョン 1.1**、Windows x64 です。同梱ローダーは **BepInEx 6 be.788 IL2CPP x64** です。Mono、x86、BepInEx 5 版で代用しないでください。ゲーム本体は含まれません。
+
+- **BepInEx 未導入：** [Releases](https://github.com/shirakawareine/lillia-first-person/releases/tag/v0.1.28) から `FirstPersonTest-0.1.28-bundle-win-x64.zip` をダウンロードします。
+- **対応する BepInEx を導入済み：** `FirstPersonTest-0.1.28-release.zip` または `FirstPersonTest.dll` を使用し、既存ローダーと設定を残します。
+- **ソース：** `FirstPersonTest-0.1.28-source.zip` はビルド用であり、インストール用ではありません。GitHub 自動生成のソースアーカイブも同様です。
+
+ゲームフォルダーに `BepInEx` や `winhttp.dll` があるか確認してください。既存ローダーや別の変更がある可能性があるため、確認せず上書きしないでください。既存の `BepInEx/LogOutput.log` があれば、BepInEx バージョンと IL2CPP 実行環境を確認できます。
+
+### 同梱セットの導入（BepInEx 未導入）
+
+1. セーブしてゲームを終了します。変更前にセーブと既存設定をバックアップしてください。
+2. `C:\Games\Lillia` など短いパスを使用します。必要なら EXE だけでなく**ゲームフォルダー全体**を移動してください。深い階層では BepInEx 無効時もキャラクター読み込みが失敗し、同じファイルを短いパスに置くと成功しました。正確なパス長の上限は未確定です。
+3. セットの**全内容**を `NoviceSuccubusLillia.exe` と同じ場所に展開します。圧縮ファイル内から起動したり、Data フォルダーに入れたり、EXE とローダーの間に余分なフォルダーを挟んだりしないでください。
+4. 以下の配置と照合します。EXE と Data フォルダーはゲーム本体のもので、セットはローダー、ランタイム、プラグイン、設定を追加します。
+
+```text
+C:\Games\Lillia\
+  NoviceSuccubusLillia.exe
+  NoviceSuccubusLillia_Data\
+  winhttp.dll
+  doorstop_config.ini
+  dotnet\
+  BepInEx\
+    core\
+    plugins\FirstPersonTest.dll
+    config\BepInEx.cfg
+    config\local.lillia.firstpersontest.cfg
+```
+
+5. 普段のゲーム EXE を起動します。初回はネット接続で Unity 基礎ライブラリを取得し、`BepInEx/interop` を生成するため、数分かかる場合があります。待機中に複数のゲームを起動しないでください。ログ用コンソールが表示されないのは正常です。
+6. ゲームプレイに入ると一人称が初期状態で有効です。ゲームを前面にして **F8** の視点切替、**F9** の髪の表示切替を確認します。プラグインログには `Loaded v0.1.28` が記録されます。読み込み成功だけで全機能の動作が確認できるわけではありません。
+
+### プラグインの導入・更新（BepInEx 導入済み）
+
+1. セーブして終了し、古い DLL と `BepInEx/config/local.lillia.firstpersontest.cfg` を `plugins` の外へバックアップします。
+2. `BepInEx/plugins/FirstPersonTest.dll` を置き換えます。サブフォルダーも含めて一つだけにし、バックアップ DLL を残さないでください。既存ローダーと設定は保持します。
+3. 単体プラグインの初回導入では一度起動して設定を生成し、終了します。生成直後の `ClipLimits` は空欄ですが、同梱セットには 4 項目が設定済みです。
+4. DLL の更新だけでは新しい設定例は**自動追加されません**。`[EventView]` の既存 `ClipLimits` 一行に、下記 4 項目の例を統合し、自分の設定も残します。同じクリップ名は一度だけ記述し、値全体を一行に保ちます。今回の追加は `Fellatio_Female(Gsun)_Loop|3|2|2` です。
+5. 保存してゲームを再起動してください。設定は起動時に読み込まれます。今回のセット改訂は設定と説明のみで、0.1.28 DLL は変更していません。
+
+### トラブル対処
+
+| 症状 | 最初に確認すること |
+| --- | --- |
+| 一人称にならない／F8 が反応しない | ゲームプレイに入り、ウィンドウを前面にします。フォルダー階層と DLL の重複を確認し、ローダー・プラグインログの読み込み結果やエラーを調べます。 |
+| 初回起動が止まって見える | `BepInEx/LogOutput.log` でダウンロードや interop 生成が進んでいるか確認します。取得失敗なら具体的なエラーと接続を確認してから再試行し、起動を繰り返さないでください。 |
+| `Character content could not be loaded` | Unity ログの `A local absolute bundle path is required` を探します。あれば終了してゲーム全体を短いパスへ移動します。画面の表示だけではパスが原因と断定できません。続く場合はログを保存してください。 |
+| イベント視点の可動範囲が広い | `Event view: clip=...` の正確な名前、対応する ClipLimits、再起動の有無を確認します。大文字・小文字を区別し、未一致のクリップには共通範囲が適用されます。 |
+| 髪や NPC が視界を遮る | F9 で髪を切り替え、遮られるイベントでは F8 で三人称に戻します。 |
+
+ローダーログ：`BepInEx/LogOutput.log`。プラグインログ：`BepInEx/FirstPersonTest.log`。Unity ログ：`%USERPROFILE%\AppData\LocalLow\PaconeSoft\Novice Succubus Lillia\Player.log`。再起動前に必要なログを保存し、通常の導入手順としてセーブやキャッシュを削除しないでください。
+
+一時停止は F8、アンインストールはゲーム終了後に `BepInEx/plugins/FirstPersonTest.dll` のみを削除します。他の MOD が使うローダーは残してください。旧版へ戻す場合はバックアップした DLL と設定を復元します。ダウンロードの照合には `SHA256SUMS.txt` を使えます。
+
 ## スクリーンショット
 
 ### 一人称 — 髪を非表示
@@ -26,16 +84,6 @@
 
 視点の違いを示す画像であり、同条件での性能比較ではありません。
 
-## 新規導入セット（BepInEx 同梱）
-
-**ゲームの保存先：** `C:\Games\Lillia` などの短いパスを使用してください。深い階層のテストフォルダーでは、BepInEx 無効時にも `Character content could not be loaded` / `A local absolute bundle path is required` が発生し、同じファイルを短いパスに置くと読み込めました。この場合はゲームを終了し、ゲームフォルダー全体を短いパスへ移動してください。対応する最大パス長は未確定です。
-
-MOD 未導入のゲーム 1.1 には、[Releases](https://github.com/shirakawareine/lillia-first-person/releases/tag/v0.1.28) の **FirstPersonTest-0.1.28-bundle-win-x64.zip** を使えます。ゲームを終了し、全内容を `NoviceSuccubusLillia.exe` と同じフォルダーへ展開して通常どおり起動してください。BepInEx 6 be.788、ランタイム、プラグイン、下記 4 クリップの ClipLimits を同梱しています。初期状態で一人称が有効です。F8 で視点、F9 で髪の表示を切り替えます。
-
-初回は Unity 基礎ライブラリのダウンロードにインターネット接続が必要で、interop の生成に数分かかる場合があります。コンソールは表示せず、ログはファイルに保存します。ゲーム本体や生成済み interop・キャッシュは含みません。 クリーンなテスト用コピーで初回の依存関係生成とプラグイン読み込みが完了しました。短いパスでゲームが起動し、一人称イベント描画をログで確認しました。追加した Gsun 制限はカタログと実行時のクリップ名に一致しますが、可動範囲の実機確認はまだ必要です。全場面を検証したものではありません。
-
-**BepInEx や他の MOD を導入済みの場合は、下記のプラグイン単体版を使い、既存設定を残してください。** このセットを上書きするとローダーや設定が置き換わります。第三者ライセンスと LGPL コンポーネントの対応ソースを同梱しています。セット内の `START-HERE.txt` も参照してください。
-
 ## 0.1.28 の動作
 
 - 体は視線の方向を向き、W/A/S/D は視線を基準とした移動だけを操作します。
@@ -48,19 +96,6 @@ MOD 未導入のゲーム 1.1 には、[Releases](https://github.com/shirakaware
 歩行アニメーションの移動量を保ったまま、入力方向へ向きを補正します。斜面、衝突、外力はゲーム本来の移動処理に任せます。移動速度、スタミナ、空中移動、重力、ゲーム素材は置き換えません。
 
 **検証状況：** ゲームから生成されたアセンブリを使ってビルドし、方向変換、制御の復元、姿勢更新順序、待機・イベントのシミュレーションテストに合格しています。ゲーム 1.1 での実機確認では正常動作と体感上の滑らかさの改善が報告されています。フレームレートの測定や全シーン・全イベントの確認は行っていません。
-
-## プラグイン単体版のダウンロードと導入
-
-[Releases](https://github.com/shirakawareine/lillia-first-person/releases/tag/v0.1.28) から `FirstPersonTest-0.1.28-release.zip` をダウンロードしてください。DLL 単体とソース ZIP もあります。
-
-**BepInEx は別途必要です。一括インストーラーではありません。** ゲーム本体やローダーは含みません。
-
-1. BepInEx 6 IL2CPP x64 を導入し、ゲームを一度起動して interop アセンブリを生成します。
-2. セーブしてゲームを終了します。
-3. `FirstPersonTest.dll` を `BepInEx/plugins/` に配置します。更新時は既存 DLL を置き換え、同名プラグインを複数置かないでください。
-4. `BepInEx/config/local.lillia.firstpersontest.cfg` を残して再起動します。
-
-起動ログに `Loaded v0.1.28` と表示されます。既存のアニメーション別 `ClipLimits` を削除・初期化する必要はありません。
 
 ## 操作
 

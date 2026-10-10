@@ -2,7 +2,65 @@
 
 [English](README.md) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md)
 
-为《见习莉莉娅》添加可切换的第一人称视角，属于非官方插件。当前为 **0.1.28 测试版**，适配本机游戏 1.1 版本、Unity 2022.3.62f2、Windows x64、IL2CPP、BepInEx 6 be.788。
+为《见习莉莉娅》添加可切换的第一人称视角，属于非官方插件。当前为 **0.1.28 测试版**，适用于游戏 1.1 版本、Unity 2022.3.62f2、Windows x64、IL2CPP、BepInEx 6 be.788。
+
+## 安装步骤与常见问题
+
+### 按已安装的组件选择下载
+
+适用环境为游戏 **1.1 版本**、Windows x64。整合包使用 **BepInEx 6 be.788 IL2CPP x64**；Mono、x86 和 BepInEx 5 版本不能替代。不包含游戏本体。
+
+- **未安装 BepInEx：** 从 [Releases](https://github.com/shirakawareine/lillia-first-person/releases/tag/v0.1.28) 下载 `FirstPersonTest-0.1.28-bundle-win-x64.zip`。
+- **已安装兼容的 BepInEx：** 下载 `FirstPersonTest-0.1.28-release.zip` 或 `FirstPersonTest.dll`，保留已有加载器与配置。
+- **源码：** `FirstPersonTest-0.1.28-source.zip` 用于编译插件，不是安装包；GitHub 自动生成的源码压缩包也不是安装包。
+
+先查看游戏目录是否已有 `BepInEx` 文件夹或 `winhttp.dll`。存在这些文件说明可能已安装加载器或其他修改，应先核对，不能直接覆盖；可在已有的 `BepInEx/LogOutput.log` 中确认 BepInEx 版本和 IL2CPP 运行环境。
+
+### 整合包安装（未安装 BepInEx）
+
+1. 保存并退出游戏。修改安装目录前，备份存档和已有配置。
+2. 建议使用 `C:\Games\Lillia` 等短路径，需要调整时移动**整个游戏文件夹**，不要只移动 EXE。测试中深层目录即使未启用 BepInEx 也无法加载角色，相同文件改放短路径后成功；尚未确定精确的长度上限。
+3. 将整合包的**全部内容**解压到 `NoviceSuccubusLillia.exe` 旁边。不要在压缩包内启动，不要解压到 Data 文件夹，也不要让加载器文件与 EXE 之间多套一层整合包文件夹。
+4. 对照下列目录。EXE 和 Data 文件夹来自游戏本体；整合包提供加载器、运行时、插件与配置。
+
+```text
+C:\Games\Lillia\
+  NoviceSuccubusLillia.exe
+  NoviceSuccubusLillia_Data\
+  winhttp.dll
+  doorstop_config.ini
+  dotnet\
+  BepInEx\
+    core\
+    plugins\FirstPersonTest.dll
+    config\BepInEx.cfg
+    config\local.lillia.firstpersontest.cfg
+```
+
+5. 启动平时使用的游戏 EXE。首次需要联网下载 Unity 基础库并生成 `BepInEx/interop`，可能需要数分钟。等待时不要重复启动多个游戏进程。没有弹出日志控制台属于正常设置。
+6. 进入正式游戏后，第一人称默认开启。在游戏窗口处于前台时，测试 **F8** 切换视角、**F9** 隐藏／显示头发。插件日志应出现 `Loaded v0.1.28`；加载成功不等于所有游戏功能都已经验证。
+
+### 插件安装与更新（已安装 BepInEx）
+
+1. 保存并退出。将旧 DLL 和 `BepInEx/config/local.lillia.firstpersontest.cfg` 备份到 `plugins` 文件夹以外的位置。
+2. 替换 `BepInEx/plugins/FirstPersonTest.dll`。包括子文件夹在内只保留一份插件，备份 DLL 不要留在其中。保留已有加载器和配置。
+3. 首次单独安装插件时，先运行一次生成配置，再退出。新生成的 `ClipLimits` 为空；整合包则已带四条预设。
+4. 替换 DLL **不会**自动合并新增预设。在 `[EventView]` 中，把下方四条示例合并到现有的 `ClipLimits` 一行，保留自定义条目。每个精确动作名只出现一次，整个值保持一行。本次新增的是 `Fellatio_Female(Gsun)_Loop|3|2|2`。
+5. 保存并重启游戏，配置在启动时读取。本次整合包修订只更新预设与说明，0.1.28 DLL 未改变。
+
+### 常见问题
+
+| 现象 | 优先检查 |
+| --- | --- |
+| 没有第一人称，或 F8 无反应 | 先进入正式游戏并让游戏窗口处于前台，核对目录层级和重复 DLL，再查看加载器、插件日志是否成功加载或报错。 |
+| 首次启动看似卡住 | 查看 `BepInEx/LogOutput.log` 是否仍在下载或生成 interop；若报告下载失败，按具体错误检查网络后再试，不要反复启动更多进程。 |
+| `Character content could not be loaded` | 在 Unity 日志中查找 `A local absolute bundle path is required`；如有，退出并把整个游戏移到短路径。单凭界面提示不能断定是路径问题，仍失败时保留日志。 |
+| 演出视角仍能大幅转动 | 核对日志 `Event view: clip=...` 的精确名称、对应 ClipLimits 条目以及是否重启；名称区分大小写，未匹配动作使用通用范围。 |
+| 头发或 NPC 挡住视线 | F9 切换头发显示；演出被遮挡时用 F8 切回第三人称。 |
+
+加载器日志：`BepInEx/LogOutput.log`；插件日志：`BepInEx/FirstPersonTest.log`；Unity 日志：`%USERPROFILE%\AppData\LocalLow\PaconeSoft\Novice Succubus Lillia\Player.log`。再次启动前保存需要排查的日志，不要把删除存档或缓存当作常规安装步骤。
+
+临时关闭第一人称可按 F8。卸载插件时，退出游戏，只删除 `BepInEx/plugins/FirstPersonTest.dll`，保留其他 MOD 共用的加载器。回退时恢复备份的 DLL 与配置。下载文件可用 `SHA256SUMS.txt` 核对。
 
 ## 截图展示
 
@@ -26,16 +84,6 @@
 
 截图用于展示视角效果，不代表同条件下的性能对比。
 
-## 新玩家整合包（包含 BepInEx）
-
-**游戏目录路径：** 建议使用 `C:\Games\Lillia` 等短路径。测试中，目录层级过深时，即使关闭 BepInEx 也会出现 `Character content could not be loaded` / `A local absolute bundle path is required`；同一份文件换到短路径后成功加载。遇到此错误，请退出游戏，将整个游戏文件夹移到短路径。尚未确定游戏支持的精确路径长度上限。
-
-尚未安装 MOD 的游戏 1.1 版本 可以从 [Releases](https://github.com/shirakawareine/lillia-first-person/releases/tag/v0.1.28) 下载 **FirstPersonTest-0.1.28-bundle-win-x64.zip**。退出游戏，将全部内容解压到 `NoviceSuccubusLillia.exe` 所在目录，然后正常启动。包内包含 BepInEx 6 be.788、运行时、插件，以及下文四个动作的 ClipLimits 预设。默认开启第一人称；F8 切换视角，F9 切换头发显示。
-
-首次启动需要联网下载 Unity 基础库并生成 interop，可能等待数分钟。已关闭日志控制台，文件日志仍保留。不包含游戏文件、已生成的 interop 或缓存。 干净测试副本已完成首次依赖生成和插件加载；短路径下成功进入游戏，日志确认了第一人称演出渲染。新增 Gsun 限制已与资源目录及运行时动作名核对，其受限转动范围仍待游戏内确认；尚未穷尽所有场景测试。
-
-**已安装 BepInEx 或其他 MOD 的玩家请用下方普通插件包，并保留原配置。** 覆盖解压整合包会替换加载器文件和设置。包内保留第三方许可，以及 LGPL 组件的对应源码压缩包。具体步骤见包内 `START-HERE.txt`。
-
 ## 0.1.28 的控制规则
 
 - 身体朝向观察方向；W/A/S/D 只控制相对视线的前进、横移和后退。
@@ -47,22 +95,7 @@
 
 游戏原来按身体朝向施加走路动画位移。本版保留动画产生的步幅，把这段位移转向移动输入的方向，再交回原生马达处理坡面、碰撞与外力。未替换移动速度、体力、空中运动、重力或游戏资源。
 
-**验证状态：** 已使用本机游戏程序集完成编译，并通过方向换算、控制恢复、姿态更新顺序、待机与演出模拟测试。用户已在游戏 1.1 版本 中确认本轮实测效果正常，并反馈运行更流畅；尚未进行帧率测量，也未逐一验证所有场景与演出。
-
-## 普通插件包下载
-
-从 [Releases](https://github.com/shirakawareine/lillia-first-person/releases/tag/v0.1.28) 下载 `FirstPersonTest-0.1.28-release.zip`，另提供 DLL 与源码 ZIP。
-
-**需要另外安装 BepInEx，这不是一键整合包。** 不包含游戏本体或加载器。
-
-## 安装与升级
-
-1. 安装 BepInEx 6 IL2CPP x64，先运行一次游戏，生成 interop 程序集。
-2. 保存并退出游戏。
-3. 将包内 `FirstPersonTest.dll` 替换到 `BepInEx/plugins/` 中的原位置。只保留一份同名插件。
-4. 保留 `BepInEx/config/local.lillia.firstpersontest.cfg`，重新启动游戏。
-
-启动日志应显示 `Loaded v0.1.28`。已有逐动作 `ClipLimits` 不需要删除或重置。
+**验证状态：** 已使用本机游戏程序集完成编译，并通过方向换算、控制恢复、姿态更新顺序、待机与演出模拟测试。用户已在游戏 1.1 版本中确认本轮实测效果正常，并反馈运行更流畅；尚未进行帧率测量，也未逐一验证所有场景与演出。
 
 ## 操作
 
@@ -109,7 +142,7 @@
 3. 将该分组中的 `ClipLimits =` 一行替换为下面的示例；不要重复添加 `[EventView]` 分组或同名配置项。整条 `ClipLimits` 保持为一行，使用英文分号和竖线。
 4. 保存文件，重新启动游戏。
 
-以下配置覆盖游戏 1.1 版本 资源目录中此系列的四个动作片段，可以直接复制：
+以下配置覆盖游戏 1.1 版本资源目录中此系列的四个动作片段，可以直接复制：
 
 ```ini
 [EventView]

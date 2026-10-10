@@ -4,6 +4,64 @@
 
 An unofficial, toggleable first-person plugin for **Novice Succubus Lillia**. Version **0.1.28 (test release)**, tested with game 1.1, Unity 2022.3.62f2, Windows x64, IL2CPP, and BepInEx 6 be.788.
 
+## Installation and troubleshooting
+
+### Choose by installed components
+
+Use game **version 1.1**, Windows x64. The bundle contains BepInEx **6 be.788 for IL2CPP x64**; Mono, x86 and BepInEx 5 packages are not substitutes. It does not include the game.
+
+- **BepInEx not installed:** download `FirstPersonTest-0.1.28-bundle-win-x64.zip` from [Releases](https://github.com/shirakawareine/lillia-first-person/releases/tag/v0.1.28).
+- **Compatible BepInEx already installed:** download `FirstPersonTest-0.1.28-release.zip` or `FirstPersonTest.dll`, and keep the existing loader and settings.
+- **Source code:** `FirstPersonTest-0.1.28-source.zip` is for building the plugin, not installing it. GitHub's automatic source archives are not installation packages either.
+
+Check the game folder for `BepInEx` and `winhttp.dll`. Their presence indicates an existing loader or modification that needs checking; do not blindly overwrite it. Confirm the BepInEx version and IL2CPP runtime in `BepInEx/LogOutput.log` when available.
+
+### Bundle installation (BepInEx not installed)
+
+1. Save and exit the game. Back up saves and any existing configuration before changing the installation.
+2. Use a short game path such as `C:\Games\Lillia`. Move the **whole game folder**, not just the EXE, if needed. A deeply nested test copy failed to load character content even without BepInEx; the same files worked at a shorter path. The exact path-length threshold is unknown.
+3. Extract **all contents** of the bundle beside `NoviceSuccubusLillia.exe`. Do not run the game inside an archive, extract into the Data folder, or leave an extra bundle folder between the EXE and the loader files.
+4. Compare the layout below. The EXE and Data folder are supplied by your game installation; the bundle adds the loader, runtime, plugin and configuration.
+
+```text
+C:\Games\Lillia\
+  NoviceSuccubusLillia.exe
+  NoviceSuccubusLillia_Data\
+  winhttp.dll
+  doorstop_config.ini
+  dotnet\
+  BepInEx\
+    core\
+    plugins\FirstPersonTest.dll
+    config\BepInEx.cfg
+    config\local.lillia.firstpersontest.cfg
+```
+
+5. Launch the usual game EXE. First launch needs Internet access to download Unity base libraries and time to generate `BepInEx/interop`; several minutes may be needed. Do not launch multiple copies while waiting. No log console window is expected.
+6. Enter normal gameplay. First person starts enabled. With the game focused, test **F8** to switch views and **F9** to hide/show hair. The plugin log should contain `Loaded v0.1.28`. Successful loading alone does not verify every gameplay feature.
+
+### Plugin installation or update (BepInEx installed)
+
+1. Save and exit. Back up the old DLL and `BepInEx/config/local.lillia.firstpersontest.cfg` outside the `plugins` folder.
+2. Replace `BepInEx/plugins/FirstPersonTest.dll`. Keep only one copy, including in subfolders; do not leave backup DLLs there. Keep your existing loader and configuration.
+3. On first plugin-only installation, launch once to generate the configuration, then exit. A newly generated `ClipLimits` is empty; the bundle already contains four presets.
+4. Updating the DLL does **not** merge new presets into existing settings. In `[EventView]`, merge the four-entry example below into the existing `ClipLimits` line, keeping custom entries. Use one entry per exact clip name and keep the whole value on one line. The added Gsun entry is `Fellatio_Female(Gsun)_Loop|3|2|2`.
+5. Save and restart. Configuration is read at startup. The bundle revision changes presets and documentation, not the 0.1.28 DLL.
+
+### Troubleshooting
+
+| Symptom | Check first |
+| --- | --- |
+| No first-person view or no F8 response | Enter gameplay, focus the game window, check the folder layout and duplicate DLLs. Then check loader and plugin logs for a successful load or an error. |
+| First launch appears stuck | Check whether `BepInEx/LogOutput.log` is still progressing through downloads or interop generation. If it reports a download failure, check connectivity and the specific error before retrying; do not repeatedly start extra copies. |
+| `Character content could not be loaded` | Look for `A local absolute bundle path is required` in the Unity player log. If present, exit and move the entire game to a shorter path. The message alone does not prove a path issue; preserve logs if it persists. |
+| Event view still has a wide range | Check the exact `Event view: clip=...` name, the matching ClipLimits entry and whether you restarted. Names are case-sensitive; unknown clips use general limits. |
+| Hair or an NPC blocks the view | F9 toggles hair; F8 returns to third person during obstructed scenes. |
+
+Loader log: `BepInEx/LogOutput.log`. Plugin log: `BepInEx/FirstPersonTest.log`. Unity log: `%USERPROFILE%\AppData\LocalLow\PaconeSoft\Novice Succubus Lillia\Player.log`. Preserve relevant logs before another launch; do not clear saves or caches as a routine installation step.
+
+To temporarily disable first person, press F8. To uninstall the plugin, exit and remove only `BepInEx/plugins/FirstPersonTest.dll`; keep shared loader files needed by other mods. To roll back, restore the backed-up DLL and configuration. `SHA256SUMS.txt` provides download checksums.
+
 ## Screenshots
 
 ### First person — hair hidden
@@ -26,16 +84,6 @@ Press **F8** to switch between first- and third-person views.
 
 These screenshots show viewing modes, not a controlled performance comparison.
 
-## Fresh-install bundle (BepInEx included)
-
-**Game folder path:** Use a short folder such as `C:\Games\Lillia`. A deeply nested test folder failed with `Character content could not be loaded` and `A local absolute bundle path is required`, even with BepInEx disabled; the same files loaded successfully from a shorter folder. If this happens, exit the game and move the entire game folder to a shorter path. The exact maximum supported path length is not established.
-
-New players with an unmodded game 1.1 installation can download **FirstPersonTest-0.1.28-bundle-win-x64.zip** from [Releases](https://github.com/shirakawareine/lillia-first-person/releases/tag/v0.1.28). Exit the game and extract all contents beside `NoviceSuccubusLillia.exe`, then start normally. BepInEx 6 be.788, its runtime, the plugin, and the four ClipLimits entries below are included. First person starts enabled; F8 switches views and F9 toggles hair.
-
-First launch needs Internet access for Unity base libraries and may take several minutes to generate interop files. The console window is disabled; file logs remain available. No game files or generated interop/cache are included. First-launch dependency generation and plugin loading completed in the clean test copy. The game loaded from a short path, and first-person event rendering was confirmed in the logs. The newly added Gsun limit matches the catalog and runtime clip name; its restricted movement still needs in-game confirmation. This is not exhaustive gameplay validation.
-
-**Already using BepInEx or other mods? Use the plugin-only package below and keep your configuration.** Extracting this fresh-install bundle over an existing setup can overwrite loader files and settings. The bundle includes third-party notices and corresponding source archives for its LGPL components. See `START-HERE.txt` inside the bundle.
-
 ## Behavior in 0.1.28
 
 - The body faces the viewing direction. W/A/S/D moves relative to the camera independently of facing.
@@ -47,19 +95,6 @@ First launch needs Internet access for Unity base libraries and may take several
 The animation's stride length is preserved and redirected toward movement input. The native motor still handles slopes, collisions, and external forces. Movement speed, stamina, airborne movement, gravity, and game assets are not replaced.
 
 **Validation:** compiled against the game's generated assemblies; direction conversion, control restoration, pose ordering, idle behavior, and event simulation checks passed. In-game testing on game 1.1 was reported successful, with subjectively smoother performance. No frame-rate benchmark or exhaustive scene/event testing has been performed.
-
-## Plugin-only download and installation
-
-Download `FirstPersonTest-0.1.28-release.zip` from [Releases](https://github.com/shirakawareine/lillia-first-person/releases/tag/v0.1.28). A standalone DLL and source ZIP are also available.
-
-**Install BepInEx separately: this is not an all-in-one installer.** No game files or loader are included.
-
-1. Install BepInEx 6 IL2CPP x64 and run the game once to generate interop assemblies.
-2. Save and exit the game.
-3. Put `FirstPersonTest.dll` in `BepInEx/plugins/`, replacing the existing DLL when updating. Keep only one copy.
-4. Keep `BepInEx/config/local.lillia.firstpersontest.cfg` and restart.
-
-The startup log should show `Loaded v0.1.28`. Existing per-animation `ClipLimits` do not need to be reset.
 
 ## Controls
 
