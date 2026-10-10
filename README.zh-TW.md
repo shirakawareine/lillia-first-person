@@ -128,7 +128,7 @@ ClipLimits = Fellatio_Female_Loop|3|2|2;Fellatio_Female(bellied man)_Loop|3|2|2;
 dotnet build .\FirstPersonTest.csproj -c Release '-p:BepInExDir=D:\Games\Lillia\BepInEx'
 ```
 
-輸出為 `bin/Release/net6.0/FirstPersonTest.dll`。專案不散布遊戲組件、資源或 BepInEx 相依檔案。實作說明見 [IMPLEMENTATION.md](IMPLEMENTATION.md)（簡體中文）。
+輸出為 `bin/Release/net6.0/FirstPersonTest.dll`。專案不散布遊戲組件、資源或 BepInEx 相依檔案。實作說明見 [IMPLEMENTATION.zh-TW.md](IMPLEMENTATION.zh-TW.md)。
 
 ## 移除
 

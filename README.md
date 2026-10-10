@@ -127,7 +127,7 @@ Use an SDK supporting .NET 6 and the game's generated BepInEx `core` and `intero
 dotnet build .\FirstPersonTest.csproj -c Release '-p:BepInExDir=D:\Games\Lillia\BepInEx'
 ```
 
-Output: `bin/Release/net6.0/FirstPersonTest.dll`. Game assemblies, assets, and BepInEx dependencies are not distributed. See [IMPLEMENTATION.md](IMPLEMENTATION.md) for implementation notes (Chinese).
+Output: `bin/Release/net6.0/FirstPersonTest.dll`. Game assemblies, assets, and BepInEx dependencies are not distributed. See [IMPLEMENTATION.md](IMPLEMENTATION.md) for implementation notes.
 
 ## Uninstall
 
