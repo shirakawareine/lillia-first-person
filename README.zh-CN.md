@@ -4,6 +4,28 @@
 
 为《见习莉莉娅》添加可切换的第一人称视角，属于非官方插件。当前为 **0.1.28 测试版**，适配本机游戏 1.1、Unity 2022.3.62f2、Windows x64、IL2CPP、BepInEx 6 be.788。
 
+## 截图展示
+
+### 第一人称 · 隐藏头发
+
+![第一人称 · 隐藏头发](docs/screenshots/first-person-hair-hidden.png)
+
+无遮挡的第一人称街道视野，左侧保留游戏原有的角色预览。
+
+### 第一人称 · 显示头发
+
+![第一人称 · 显示头发](docs/screenshots/first-person-hair-visible.png)
+
+头发可能遮挡视野。按 **F9** 隐藏或显示第一人称视野中的头发。
+
+### 第三人称
+
+![第三人称](docs/screenshots/third-person.png)
+
+按 **F8** 随时切换第一／第三人称视角。
+
+截图用于展示视角效果，不代表同条件下的性能对比。
+
 ## 新玩家整合包（包含 BepInEx）
 
 **游戏目录路径：** 建议使用 `C:\Games\Lillia` 等短路径。测试中，目录层级过深时，即使关闭 BepInEx 也会出现 `Character content could not be loaded` / `A local absolute bundle path is required`；同一份文件换到短路径后成功加载。遇到此错误，请退出游戏，将整个游戏文件夹移到短路径。尚未确定游戏支持的精确路径长度上限。

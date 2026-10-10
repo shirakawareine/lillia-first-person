@@ -4,6 +4,28 @@
 
 為《見習莉莉婭》（Novice Succubus Lillia）加入可切換的第一人稱視角，屬於非官方外掛。目前為 **0.1.28 測試版**，已在遊戲 1.1、Unity 2022.3.62f2、Windows x64、IL2CPP、BepInEx 6 be.788 環境測試。
 
+## 截圖展示
+
+### 第一人稱 · 隱藏頭髮
+
+![第一人稱 · 隱藏頭髮](docs/screenshots/first-person-hair-hidden.png)
+
+無遮擋的第一人稱街道視野，左側保留遊戲原有的角色預覽。
+
+### 第一人稱 · 顯示頭髮
+
+![第一人稱 · 顯示頭髮](docs/screenshots/first-person-hair-visible.png)
+
+頭髮可能遮擋視野。按 **F9** 隱藏或顯示第一人稱視野中的頭髮。
+
+### 第三人稱
+
+![第三人稱](docs/screenshots/third-person.png)
+
+按 **F8** 隨時切換第一／第三人稱視角。
+
+截圖用於展示視角效果，不代表相同條件下的效能比較。
+
 ## 新玩家整合包（包含 BepInEx）
 
 **遊戲目錄路徑：** 建議使用 `C:\Games\Lillia` 等短路徑。測試時，目錄層級過深即使關閉 BepInEx，仍出現 `Character content could not be loaded` / `A local absolute bundle path is required`；相同檔案改放短路徑後成功載入。遇到此錯誤，請結束遊戲，將整個遊戲資料夾移至短路徑。目前尚未確定遊戲支援的精確路徑長度上限。

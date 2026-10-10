@@ -29,6 +29,7 @@ shutil.copyfile(a.dll, plugins/'FirstPersonTest.dll')
 shutil.copyfile(repo/'packaging/START-HERE.txt', stage/'START-HERE.txt')
 docs = stage/'LilliaFirstPerson-Docs'; docs.mkdir()
 for p in repo.glob('*.md'): shutil.copyfile(p,docs/p.name)
+shutil.copytree(repo/'docs/screenshots', docs/'docs/screenshots')
 third = docs/'ThirdParty'; third.mkdir()
 shutil.copytree(up/'licenses',third/'licenses')
 for name in ['dotnet-LICENSE.txt','dotnet-THIRD-PARTY-NOTICES.txt']:

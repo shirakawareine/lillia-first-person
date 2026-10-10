@@ -4,6 +4,28 @@
 
 **Novice Succubus Lillia** に切り替え可能な一人称視点を追加する非公式プラグインです。現在のバージョンは **0.1.28（テスト版）**。ゲーム 1.1、Unity 2022.3.62f2、Windows x64、IL2CPP、BepInEx 6 be.788 で動作確認しています。
 
+## スクリーンショット
+
+### 一人称 — 髪を非表示
+
+![一人称 — 髪を非表示](docs/screenshots/first-person-hair-hidden.png)
+
+髪に遮られない一人称の街並み。左側にはゲーム本来のキャラクタープレビューが表示されます。
+
+### 一人称 — 髪を表示
+
+![一人称 — 髪を表示](docs/screenshots/first-person-hair-visible.png)
+
+髪が視界を遮る場合があります。**F9** で一人称視点の髪の表示・非表示を切り替えられます。
+
+### 三人称
+
+![三人称](docs/screenshots/third-person.png)
+
+**F8** で一人称と三人称を切り替えられます。
+
+視点の違いを示す画像であり、同条件での性能比較ではありません。
+
 ## 新規導入セット（BepInEx 同梱）
 
 **ゲームの保存先：** `C:\Games\Lillia` などの短いパスを使用してください。深い階層のテストフォルダーでは、BepInEx 無効時にも `Character content could not be loaded` / `A local absolute bundle path is required` が発生し、同じファイルを短いパスに置くと読み込めました。この場合はゲームを終了し、ゲームフォルダー全体を短いパスへ移動してください。対応する最大パス長は未確定です。

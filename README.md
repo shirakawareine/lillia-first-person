@@ -4,6 +4,28 @@
 
 An unofficial, toggleable first-person plugin for **Novice Succubus Lillia**. Version **0.1.28 (test release)**, tested with game 1.1, Unity 2022.3.62f2, Windows x64, IL2CPP, and BepInEx 6 be.788.
 
+## Screenshots
+
+### First person — hair hidden
+
+![First person — hair hidden](docs/screenshots/first-person-hair-hidden.png)
+
+An unobstructed first-person street view. The game’s character preview remains visible on the left.
+
+### First person — hair visible
+
+![First person — hair visible](docs/screenshots/first-person-hair-visible.png)
+
+Hair can naturally obstruct the view. Press **F9** to hide or show hair in first person.
+
+### Third person
+
+![Third person](docs/screenshots/third-person.png)
+
+Press **F8** to switch between first- and third-person views.
+
+These screenshots show viewing modes, not a controlled performance comparison.
+
 ## Fresh-install bundle (BepInEx included)
 
 **Game folder path:** Use a short folder such as `C:\Games\Lillia`. A deeply nested test folder failed with `Character content could not be loaded` and `A local absolute bundle path is required`, even with BepInEx disabled; the same files loaded successfully from a shorter folder. If this happens, exit the game and move the entire game folder to a shorter path. The exact maximum supported path length is not established.
