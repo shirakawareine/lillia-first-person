@@ -6,9 +6,11 @@ An unofficial, toggleable first-person plugin for **Novice Succubus Lillia**. Ve
 
 ## Fresh-install bundle (BepInEx included)
 
-New players with an unmodded game 1.1 installation can download **FirstPersonTest-0.1.28-bundle-win-x64.zip** from [Releases](https://github.com/shirakawareine/lillia-first-person/releases/tag/v0.1.28). Exit the game and extract all contents beside `NoviceSuccubusLillia.exe`, then start normally. BepInEx 6 be.788, its runtime, the plugin, and the three ClipLimits entries below are included. First person starts enabled; F8 switches views and F9 toggles hair.
+**Game folder path:** Use a short folder such as `C:\Games\Lillia`. A deeply nested test folder failed with `Character content could not be loaded` and `A local absolute bundle path is required`, even with BepInEx disabled; the same files loaded successfully from a shorter folder. If this happens, exit the game and move the entire game folder to a shorter path. The exact maximum supported path length is not established.
 
-First launch needs Internet access for Unity base libraries and may take several minutes to generate interop files. The console window is disabled; file logs remain available. No game files or generated interop/cache are included. Bundle structure, configuration, and binary hashes have been checked; a clean-install first launch has not been retested in-game.
+New players with an unmodded game 1.1 installation can download **FirstPersonTest-0.1.28-bundle-win-x64.zip** from [Releases](https://github.com/shirakawareine/lillia-first-person/releases/tag/v0.1.28). Exit the game and extract all contents beside `NoviceSuccubusLillia.exe`, then start normally. BepInEx 6 be.788, its runtime, the plugin, and the four ClipLimits entries below are included. First person starts enabled; F8 switches views and F9 toggles hair.
+
+First launch needs Internet access for Unity base libraries and may take several minutes to generate interop files. The console window is disabled; file logs remain available. No game files or generated interop/cache are included. First-launch dependency generation and plugin loading completed in the clean test copy. The game loaded from a short path, and first-person event rendering was confirmed in the logs. The newly added Gsun limit matches the catalog and runtime clip name; its restricted movement still needs in-game confirmation. This is not exhaustive gameplay validation.
 
 **Already using BepInEx or other mods? Use the plugin-only package below and keep your configuration.** Extracting this fresh-install bundle over an existing setup can overwrite loader files and settings. The bundle includes third-party notices and corresponding source archives for its LGPL components. See `START-HERE.txt` inside the bundle.
 
@@ -75,22 +77,22 @@ Format: `ClipName|yaw|up|down;OtherClip|yaw|up|down`. Each angle is 0–89°. `0
 
 ### ClipLimits example
 
-**The plugin DLL has no built-in per-animation limits. With the plugin-only package, a newly generated ClipLimits is empty. The fresh-install bundle already includes the three entries below.** Default general limits are 75° left/right, 75° up, and 85° down; your changes to the settings override these defaults. Installing the DLL alone does not add the restrictions below.
+**The plugin DLL has no built-in per-animation limits. With the plugin-only package, a newly generated ClipLimits is empty. The fresh-install bundle already includes the four entries below.** Default general limits are 75° left/right, 75° up, and 85° down; your changes to the settings override these defaults. Installing the DLL alone does not add the restrictions below.
 
 1. Run the game once with the plugin to generate its configuration, then exit.
 2. Find the existing `[EventView]` section in `BepInEx/config/local.lillia.firstpersontest.cfg`.
 3. Replace its `ClipLimits =` line with the example. Do not duplicate the section or key. Keep the entire value on one line, with ASCII `;` and `|` separators.
 4. Save and restart the game.
 
-These three entries have been used and verified in game 1.1:
+These four entries cover this animation family listed in the game 1.1 catalog:
 
 ```ini
 [EventView]
 DefaultYaw = 75
-ClipLimits = Fellatio_Female_Loop|3|2|2;Fellatio_Female(bellied man)_Loop|3|2|2;Fellatio_Female_End|3|2|2
+ClipLimits = Fellatio_Female_Loop|3|2|2;Fellatio_Female(bellied man)_Loop|3|2|2;Fellatio_Female_End|3|2|2;Fellatio_Female(Gsun)_Loop|3|2|2
 ```
 
-`3|2|2` allows 3° left/right, 2° up, and 2° down relative to the animated head, closely following its motion. Only these three clips use the narrow limits. Other clips retain the general limits. Use `0|0|0` to follow a clip's animation completely.
+`3|2|2` allows 3° left/right, 2° up, and 2° down relative to the animated head, closely following its motion. Only these four clips use the narrow limits. Other clips retain the general limits. Use `0|0|0` to follow a clip's animation completely.
 
 Merge existing custom entries with semicolons rather than discarding them. List each clip once. Names are case-sensitive and must match `Event view: clip=...` in the log. Game updates may rename clips; adjust entries to the new names when needed.
 

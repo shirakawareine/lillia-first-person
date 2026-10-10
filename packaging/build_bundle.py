@@ -45,7 +45,7 @@ notice+='\n'.join(d['name']+': '+d['source'] for d in deps)+'\n'
 # Confirm parser-compatible presets and native loader paths.
 c=configparser.ConfigParser();c.optionxform=str;c.read(config/'local.lillia.firstpersontest.cfg',encoding='utf-8-sig')
 entries=c['EventView']['ClipLimits'].split(';')
-assert len(entries)==3 and all(e.split('|')[1:]==['3','2','2'] for e in entries)
+assert len(entries)==4 and all(e.split('|')[1:]==['3','2','2'] for e in entries)
 assert c['Body']['FollowCameraYaw']=='true' and c['Body']['FollowHeadPitch']=='true'
 assert c['View']['LookUpDegrees']=='75' and c['View']['LookDownDegrees']=='85'
 b=configparser.ConfigParser();b.read(config/'BepInEx.cfg',encoding='utf-8-sig');assert not b.getboolean('Logging.Console','Enabled')

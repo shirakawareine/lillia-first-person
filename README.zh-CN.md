@@ -6,9 +6,11 @@
 
 ## 新玩家整合包（包含 BepInEx）
 
-尚未安装 MOD 的游戏 1.1 可以从 [Releases](https://github.com/shirakawareine/lillia-first-person/releases/tag/v0.1.28) 下载 **FirstPersonTest-0.1.28-bundle-win-x64.zip**。退出游戏，将全部内容解压到 `NoviceSuccubusLillia.exe` 所在目录，然后正常启动。包内包含 BepInEx 6 be.788、运行时、插件，以及下文三个动作的 ClipLimits 预设。默认开启第一人称；F8 切换视角，F9 切换头发显示。
+**游戏目录路径：** 建议使用 `C:\Games\Lillia` 等短路径。测试中，目录层级过深时，即使关闭 BepInEx 也会出现 `Character content could not be loaded` / `A local absolute bundle path is required`；同一份文件换到短路径后成功加载。遇到此错误，请退出游戏，将整个游戏文件夹移到短路径。尚未确定游戏支持的精确路径长度上限。
 
-首次启动需要联网下载 Unity 基础库并生成 interop，可能等待数分钟。已关闭日志控制台，文件日志仍保留。不包含游戏文件、已生成的 interop 或缓存。已检查包结构、配置和二进制校验值，但尚未在干净游戏环境重新实测首次启动。
+尚未安装 MOD 的游戏 1.1 可以从 [Releases](https://github.com/shirakawareine/lillia-first-person/releases/tag/v0.1.28) 下载 **FirstPersonTest-0.1.28-bundle-win-x64.zip**。退出游戏，将全部内容解压到 `NoviceSuccubusLillia.exe` 所在目录，然后正常启动。包内包含 BepInEx 6 be.788、运行时、插件，以及下文四个动作的 ClipLimits 预设。默认开启第一人称；F8 切换视角，F9 切换头发显示。
+
+首次启动需要联网下载 Unity 基础库并生成 interop，可能等待数分钟。已关闭日志控制台，文件日志仍保留。不包含游戏文件、已生成的 interop 或缓存。 干净测试副本已完成首次依赖生成和插件加载；短路径下成功进入游戏，日志确认了第一人称演出渲染。新增 Gsun 限制已与资源目录及运行时动作名核对，其受限转动范围仍待游戏内确认；尚未穷尽所有场景测试。
 
 **已安装 BepInEx 或其他 MOD 的玩家请用下方普通插件包，并保留原配置。** 覆盖解压整合包会替换加载器文件和设置。包内保留第三方许可，以及 LGPL 组件的对应源码压缩包。具体步骤见包内 `START-HERE.txt`。
 
@@ -78,22 +80,22 @@
 
 ### ClipLimits 配置示例
 
-**DLL 本身没有内置逐动作限制，普通插件包首次生成的 `ClipLimits` 为空；整合包已预填下方三个动作的限制。** 留空时，所有演出都使用通用范围：左右各 75°、上 75°、下 85°（修改过配置时以你的实际值为准）。需要几乎完全跟随动画的动作，应手动添加以下限制；安装 DLL 不会自动获得这些配置。
+**DLL 本身没有内置逐动作限制，普通插件包首次生成的 `ClipLimits` 为空；整合包已预填下方四个动作的限制。** 留空时，所有演出都使用通用范围：左右各 75°、上 75°、下 85°（修改过配置时以你的实际值为准）。需要几乎完全跟随动画的动作，应手动添加以下限制；安装 DLL 不会自动获得这些配置。
 
 1. 安装插件并运行一次游戏，让插件生成配置文件，然后退出游戏。
 2. 打开 `BepInEx/config/local.lillia.firstpersontest.cfg`，找到已有的 `[EventView]` 分组。
 3. 将该分组中的 `ClipLimits =` 一行替换为下面的示例；不要重复添加 `[EventView]` 分组或同名配置项。整条 `ClipLimits` 保持为一行，使用英文分号和竖线。
 4. 保存文件，重新启动游戏。
 
-以下是游戏 1.1 中已使用并验证的三个动作片段配置，可以直接复制：
+以下配置覆盖游戏 1.1 资源目录中此系列的四个动作片段，可以直接复制：
 
 ```ini
 [EventView]
 DefaultYaw = 75
-ClipLimits = Fellatio_Female_Loop|3|2|2;Fellatio_Female(bellied man)_Loop|3|2|2;Fellatio_Female_End|3|2|2
+ClipLimits = Fellatio_Female_Loop|3|2|2;Fellatio_Female(bellied man)_Loop|3|2|2;Fellatio_Female_End|3|2|2;Fellatio_Female(Gsun)_Loop|3|2|2
 ```
 
-`3|2|2` 表示相对动画头部方向，左右各允许 3°、上抬 2°、下压 2°，即几乎完全跟随动画。只有列出的三个片段使用这个小范围；其他片段仍使用通用范围。若希望某个片段完全锁定到动画，将它对应的 `3|2|2` 改为 `0|0|0`。
+`3|2|2` 表示相对动画头部方向，左右各允许 3°、上抬 2°、下压 2°，即几乎完全跟随动画。只有列出的四个片段使用这个小范围；其他片段仍使用通用范围。若希望某个片段完全锁定到动画，将它对应的 `3|2|2` 改为 `0|0|0`。
 
 已有自定义条目时，用英文分号合并到同一个 `ClipLimits` 值里，不必覆盖原有条目。同一个片段只写一次。片段名区分大小写，必须与日志 `Event view: clip=...` 中的名称一致；游戏更新后若动作名改变，旧条目不会匹配，需要按新日志调整。
 

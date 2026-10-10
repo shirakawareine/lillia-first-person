@@ -6,9 +6,11 @@
 
 ## 新玩家整合包（包含 BepInEx）
 
-尚未安裝 MOD 的遊戲 1.1 可從 [Releases](https://github.com/shirakawareine/lillia-first-person/releases/tag/v0.1.28) 下載 **FirstPersonTest-0.1.28-bundle-win-x64.zip**。結束遊戲，將全部內容解壓縮至 `NoviceSuccubusLillia.exe` 所在目錄，再正常啟動。內含 BepInEx 6 be.788、執行階段、外掛，以及下方三個動作的 ClipLimits 預設。預設開啟第一人稱；F8 切換視角，F9 切換頭髮顯示。
+**遊戲目錄路徑：** 建議使用 `C:\Games\Lillia` 等短路徑。測試時，目錄層級過深即使關閉 BepInEx，仍出現 `Character content could not be loaded` / `A local absolute bundle path is required`；相同檔案改放短路徑後成功載入。遇到此錯誤，請結束遊戲，將整個遊戲資料夾移至短路徑。目前尚未確定遊戲支援的精確路徑長度上限。
 
-首次啟動需連網下載 Unity 基礎函式庫並產生 interop，可能需等待數分鐘。已關閉主控台，檔案日誌仍保留。不含遊戲檔案、已產生的 interop 或快取。已檢查套件結構、設定與二進位校驗值，但尚未在乾淨遊戲環境重新實測首次啟動。
+尚未安裝 MOD 的遊戲 1.1 可從 [Releases](https://github.com/shirakawareine/lillia-first-person/releases/tag/v0.1.28) 下載 **FirstPersonTest-0.1.28-bundle-win-x64.zip**。結束遊戲，將全部內容解壓縮至 `NoviceSuccubusLillia.exe` 所在目錄，再正常啟動。內含 BepInEx 6 be.788、執行階段、外掛，以及下方四個動作的 ClipLimits 預設。預設開啟第一人稱；F8 切換視角，F9 切換頭髮顯示。
+
+首次啟動需連網下載 Unity 基礎函式庫並產生 interop，可能需等待數分鐘。已關閉主控台，檔案日誌仍保留。不含遊戲檔案、已產生的 interop 或快取。 乾淨測試副本已完成首次相依項目產生和外掛載入；短路徑下成功進入遊戲，日誌確認了一人稱演出繪製。新增 Gsun 限制已與資源目錄及執行時動作名稱核對，其受限轉動範圍仍待遊戲內確認；尚未完整測試所有場景。
 
 **已安裝 BepInEx 或其他 MOD 者請使用下方一般外掛包，保留原設定。** 覆蓋解壓縮整合包會取代載入器檔案及設定。內含第三方授權，以及 LGPL 元件的對應原始碼壓縮檔。步驟見包內 `START-HERE.txt`。
 
@@ -76,22 +78,22 @@
 
 ### ClipLimits 設定範例
 
-**DLL 本身沒有內建逐動畫限制，一般外掛包首次產生的 ClipLimits 為空白；整合包已填入下方三個動作的限制。** 預設情況下，所有演出使用左右各 75°、上 75°、下 85° 的通用範圍；若已修改設定，則以實際設定值為準。只安裝 DLL 不會自動加入以下限制。
+**DLL 本身沒有內建逐動畫限制，一般外掛包首次產生的 ClipLimits 為空白；整合包已填入下方四個動作的限制。** 預設情況下，所有演出使用左右各 75°、上 75°、下 85° 的通用範圍；若已修改設定，則以實際設定值為準。只安裝 DLL 不會自動加入以下限制。
 
 1. 安裝外掛並執行一次遊戲，讓外掛產生設定檔，再結束遊戲。
 2. 開啟 `BepInEx/config/local.lillia.firstpersontest.cfg`，找到既有的 `[EventView]` 分組。
 3. 將其中的 `ClipLimits =` 一行替換成下方範例。不要重複加入分組或同名設定。整個值保持單行，使用半形 `;` 與 `|`。
 4. 儲存後重新啟動遊戲。
 
-以下三個動畫片段的設定已在遊戲 1.1 中使用並驗證，可直接複製：
+以下設定涵蓋遊戲 1.1 資源目錄中此系列的四個動畫片段，可直接複製：
 
 ```ini
 [EventView]
 DefaultYaw = 75
-ClipLimits = Fellatio_Female_Loop|3|2|2;Fellatio_Female(bellied man)_Loop|3|2|2;Fellatio_Female_End|3|2|2
+ClipLimits = Fellatio_Female_Loop|3|2|2;Fellatio_Female(bellied man)_Loop|3|2|2;Fellatio_Female_End|3|2|2;Fellatio_Female(Gsun)_Loop|3|2|2
 ```
 
-`3|2|2` 表示相對動畫頭部方向，左右各允許 3°、上抬 2°、下壓 2°，幾乎完全跟隨動畫。只有列出的三個片段使用此小範圍；其他片段仍使用通用範圍。若要完全鎖定至動畫，將該片段的值改為 `0|0|0`。
+`3|2|2` 表示相對動畫頭部方向，左右各允許 3°、上抬 2°、下壓 2°，幾乎完全跟隨動畫。只有列出的四個片段使用此小範圍；其他片段仍使用通用範圍。若要完全鎖定至動畫，將該片段的值改為 `0|0|0`。
 
 已有自訂項目時，以半形分號合併至同一個值，不必覆蓋原有項目。同一片段只填一次。片段名稱區分大小寫，必須與日誌 `Event view: clip=...` 完全一致；遊戲更新後若名稱改變，請依新日誌調整。
 
