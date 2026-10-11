@@ -149,6 +149,8 @@ DefaultYaw = 75
 ClipLimits = Fellatio_Female_Loop|3|2|2;Fellatio_Female(bellied man)_Loop|3|2|2;Fellatio_Female_End|3|2|2;Fellatio_Female(Gsun)_Loop|3|2|2
 ```
 
+The Gsun clip restriction (3° left/right, 2° up/down) has passed in-game testing, as confirmed by the tester. This does not imply exhaustive testing of all clips.
+
 `3|2|2` allows 3° left/right, 2° up, and 2° down relative to the animated head, closely following its motion. Only these four clips use the narrow limits. Other clips retain the general limits. Use `0|0|0` to follow a clip's animation completely.
 
 Merge existing custom entries with semicolons rather than discarding them. List each clip once. Names are case-sensitive and must match `Event view: clip=...` in the log. Game updates may rename clips; adjust entries to the new names when needed.

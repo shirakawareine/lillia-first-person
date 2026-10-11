@@ -59,6 +59,8 @@ Loader log: `BepInEx/LogOutput.log`. Plugin log: `BepInEx/FirstPersonTest.log`. 
 
 To temporarily disable first person, press F8. To uninstall the plugin, exit and remove only `BepInEx/plugins/FirstPersonTest.dll`; keep shared loader files needed by other mods. To roll back, restore the backed-up DLL and configuration. `SHA256SUMS.txt` provides download checksums.
 
+The Gsun clip restriction (3° left/right, 2° up/down) has passed in-game testing, as confirmed by the tester. This does not imply exhaustive testing of all clips.
+
 Documentation: LilliaFirstPerson-Docs/README.md
 
 ## 安装步骤与常见问题
@@ -118,6 +120,8 @@ C:\Games\Lillia\
 加载器日志：`BepInEx/LogOutput.log`；插件日志：`BepInEx/FirstPersonTest.log`；Unity 日志：`%USERPROFILE%\AppData\LocalLow\PaconeSoft\Novice Succubus Lillia\Player.log`。再次启动前保存需要排查的日志，不要把删除存档或缓存当作常规安装步骤。
 
 临时关闭第一人称可按 F8。卸载插件时，退出游戏，只删除 `BepInEx/plugins/FirstPersonTest.dll`，保留其他 MOD 共用的加载器。回退时恢复备份的 DLL 与配置。下载文件可用 `SHA256SUMS.txt` 核对。
+
+Gsun 动作的限制（左右各 3°、上下各 2°）已通过游戏内测试，由测试者确认；这不代表所有动作都已穷尽测试。
 
 Documentation: LilliaFirstPerson-Docs/README.zh-CN.md
 
@@ -179,6 +183,8 @@ C:\Games\Lillia\
 
 暫時關閉第一人稱可按 F8。移除外掛時，結束遊戲，只刪除 `BepInEx/plugins/FirstPersonTest.dll`，保留其他 MOD 共用的載入器。回復舊版時還原備份的 DLL 與設定。下載檔案可用 `SHA256SUMS.txt` 核對。
 
+Gsun 動作的限制（左右各 3°、上下各 2°）已通過遊戲內測試，由測試者確認；這不代表所有動作都已完整測試。
+
 Documentation: LilliaFirstPerson-Docs/README.zh-TW.md
 
 ## インストール手順とトラブル対処
@@ -238,5 +244,7 @@ C:\Games\Lillia\
 ローダーログ：`BepInEx/LogOutput.log`。プラグインログ：`BepInEx/FirstPersonTest.log`。Unity ログ：`%USERPROFILE%\AppData\LocalLow\PaconeSoft\Novice Succubus Lillia\Player.log`。再起動前に必要なログを保存し、通常の導入手順としてセーブやキャッシュを削除しないでください。
 
 一時停止は F8、アンインストールはゲーム終了後に `BepInEx/plugins/FirstPersonTest.dll` のみを削除します。他の MOD が使うローダーは残してください。旧版へ戻す場合はバックアップした DLL と設定を復元します。ダウンロードの照合には `SHA256SUMS.txt` を使えます。
+
+Gsun クリップの制限（左右各 3°、上下各 2°）はゲーム内テストを通過し、実施者が確認しました。全クリップを網羅した検証を意味するものではありません。
 
 Documentation: LilliaFirstPerson-Docs/README.ja.md
