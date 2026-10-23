@@ -2,7 +2,7 @@
 
 [English](README.md) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md)
 
-An unofficial, toggleable first-person plugin for **Apprentice Succubus Lilia**. Version **0.1.28 (test release)**, tested with game 1.1, Unity 2022.3.62f2, Windows x64, IL2CPP, and BepInEx 6 be.788.
+An unofficial, toggleable first-person plugin for **Apprentice Succubus Lilia / Novice Succubus Lillia**. Version **0.1.28 (test release)**, tested with game 1.1, Unity 2022.3.62f2, Windows x64, IL2CPP, and BepInEx 6 be.788.
 
 ## Installation and troubleshooting
 
