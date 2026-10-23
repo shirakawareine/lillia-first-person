@@ -2,13 +2,15 @@
 
 [English](README.md) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md)
 
-為《見習莉莉婭》（Apprentice Succubus Lilia / Novice Succubus Lillia）加入可切換的第一人稱視角，屬於非官方外掛。目前為 **0.1.28 測試版**，已在遊戲 1.1 版本、Unity 2022.3.62f2、Windows x64、IL2CPP、BepInEx 6 be.788 環境測試。
+為《見習莉莉婭》（Apprentice Succubus Lilia / Novice Succubus Lillia）加入可切換的第一人稱視角，屬於非官方外掛。目前為 **0.1.28 測試版**，已在遊戲 1.1／1.2 版本、Unity 2022.3.62f2、Windows x64、IL2CPP、BepInEx 6 be.788 環境測試。
+
+**遊戲 1.2 相容情況（2026-10-23）：** 已從 GitHub Releases 下載公開發布的 v0.1.28 整合包，並安裝至遊戲 1.2 版本。首次初始化完成後，使用者實測回報可以執行，暫未發現異常；本次測試不需修改外掛。這是使用者實測的執行結果，不代表所有場景、動畫或新增遊戲機制皆已驗證。先前的遊戲 1.1 測試記錄仍保留於下文。
 
 ## 安裝步驟與常見問題
 
 ### 按已安裝的元件選擇下載
 
-適用環境為遊戲 **1.1 版本**、Windows x64。整合包使用 **BepInEx 6 be.788 IL2CPP x64**；Mono、x86 和 BepInEx 5 版本不能替代。不包含遊戲本體。
+適用環境為遊戲 **1.1／1.2 版本**、Windows x64。整合包使用 **BepInEx 6 be.788 IL2CPP x64**；Mono、x86 和 BepInEx 5 版本不能替代。不包含遊戲本體。
 
 - **未安裝 BepInEx：** 從 [Releases](https://github.com/shirakawareine/lillia-first-person/releases/tag/v0.1.28) 下載 `FirstPersonTest-0.1.28-bundle-win-x64.zip`。
 - **已安裝相容的 BepInEx：** 下載 `FirstPersonTest-0.1.28-release.zip` 或 `FirstPersonTest.dll`，保留既有載入器與設定。

@@ -2,13 +2,15 @@
 
 [English](README.md) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md)
 
-An unofficial, toggleable first-person plugin for **Apprentice Succubus Lilia / Novice Succubus Lillia**. Version **0.1.28 (test release)**, tested with game 1.1, Unity 2022.3.62f2, Windows x64, IL2CPP, and BepInEx 6 be.788.
+An unofficial, toggleable first-person plugin for **Apprentice Succubus Lilia / Novice Succubus Lillia**. Version **0.1.28 (test release)**, tested with game 1.1 and user-tested on 1.2, Unity 2022.3.62f2, Windows x64, IL2CPP, and BepInEx 6 be.788.
+
+**Game 1.2 compatibility (2026-10-23):** The published v0.1.28 bundle was downloaded from GitHub Releases and installed on game version 1.2. After first-launch initialization, the user reported that it ran without apparent issues. No plugin changes were needed for this test. This is user-reported runtime compatibility, not exhaustive validation of every scene, animation or new game mechanic. Earlier game 1.1 testing remains documented below.
 
 ## Installation and troubleshooting
 
 ### Choose by installed components
 
-Use game **version 1.1**, Windows x64. The bundle contains BepInEx **6 be.788 for IL2CPP x64**; Mono, x86 and BepInEx 5 packages are not substitutes. It does not include the game.
+Tested game versions: **1.1 and 1.2**, Windows x64. The bundle contains BepInEx **6 be.788 for IL2CPP x64**; Mono, x86 and BepInEx 5 packages are not substitutes. It does not include the game.
 
 - **BepInEx not installed:** download `FirstPersonTest-0.1.28-bundle-win-x64.zip` from [Releases](https://github.com/shirakawareine/lillia-first-person/releases/tag/v0.1.28).
 - **Compatible BepInEx already installed:** download `FirstPersonTest-0.1.28-release.zip` or `FirstPersonTest.dll`, and keep the existing loader and settings.

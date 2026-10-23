@@ -2,13 +2,15 @@
 
 [English](README.md) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md)
 
-**Apprentice Succubus Lilia / Novice Succubus Lillia** に切り替え可能な一人称視点を追加する非公式プラグインです。現在のバージョンは **0.1.28（テスト版）**。ゲーム 1.1、Unity 2022.3.62f2、Windows x64、IL2CPP、BepInEx 6 be.788 で動作確認しています。
+**Apprentice Succubus Lilia / Novice Succubus Lillia** に切り替え可能な一人称視点を追加する非公式プラグインです。現在のバージョンは **0.1.28（テスト版）**。ゲーム 1.1／1.2、Unity 2022.3.62f2、Windows x64、IL2CPP、BepInEx 6 be.788 で動作確認しています。
+
+**ゲーム 1.2 の動作確認（2026-10-23）：** GitHub Releases の公開済み v0.1.28 セットをダウンロードし、ゲーム 1.2 に導入しました。初回の初期化後、ユーザーから問題なく動作したとの報告がありました。このテストではプラグインの変更は不要でした。ユーザーによる動作報告であり、全シーン・アニメーション・新機能を網羅した検証ではありません。従来のゲーム 1.1 の検証記録も下記に残しています。
 
 ## インストール手順とトラブル対処
 
 ### 導入済みの構成に応じたダウンロード
 
-対象はゲーム **バージョン 1.1**、Windows x64 です。同梱ローダーは **BepInEx 6 be.788 IL2CPP x64** です。Mono、x86、BepInEx 5 版で代用しないでください。ゲーム本体は含まれません。
+対象はゲーム **バージョン 1.1／1.2**、Windows x64 です。同梱ローダーは **BepInEx 6 be.788 IL2CPP x64** です。Mono、x86、BepInEx 5 版で代用しないでください。ゲーム本体は含まれません。
 
 - **BepInEx 未導入：** [Releases](https://github.com/shirakawareine/lillia-first-person/releases/tag/v0.1.28) から `FirstPersonTest-0.1.28-bundle-win-x64.zip` をダウンロードします。
 - **対応する BepInEx を導入済み：** `FirstPersonTest-0.1.28-release.zip` または `FirstPersonTest.dll` を使用し、既存ローダーと設定を残します。

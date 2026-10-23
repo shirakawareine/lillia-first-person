@@ -2,13 +2,15 @@
 
 [English](README.md) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md)
 
-为《见习莉莉娅》添加可切换的第一人称视角，属于非官方插件。当前为 **0.1.28 测试版**，适用于游戏 1.1 版本、Unity 2022.3.62f2、Windows x64、IL2CPP、BepInEx 6 be.788。
+为《见习莉莉娅》添加可切换的第一人称视角，属于非官方插件。当前为 **0.1.28 测试版**，适用于游戏 1.1／1.2 版本、Unity 2022.3.62f2、Windows x64、IL2CPP、BepInEx 6 be.788。
+
+**游戏 1.2 兼容情况（2026-10-23）：** 已从 GitHub Releases 下载公开发布的 v0.1.28 整合包，并安装到游戏 1.2 版本。首次初始化完成后，用户实测反馈可以运行，暂未发现异常；本次测试无需修改插件。这是用户实测的运行结果，不代表所有场景、动画或新增游戏机制均已验证。此前的游戏 1.1 测试记录仍保留在下文。
 
 ## 安装步骤与常见问题
 
 ### 按已安装的组件选择下载
 
-适用环境为游戏 **1.1 版本**、Windows x64。整合包使用 **BepInEx 6 be.788 IL2CPP x64**；Mono、x86 和 BepInEx 5 版本不能替代。不包含游戏本体。
+适用环境为游戏 **1.1／1.2 版本**、Windows x64。整合包使用 **BepInEx 6 be.788 IL2CPP x64**；Mono、x86 和 BepInEx 5 版本不能替代。不包含游戏本体。
 
 - **未安装 BepInEx：** 从 [Releases](https://github.com/shirakawareine/lillia-first-person/releases/tag/v0.1.28) 下载 `FirstPersonTest-0.1.28-bundle-win-x64.zip`。
 - **已安装兼容的 BepInEx：** 下载 `FirstPersonTest-0.1.28-release.zip` 或 `FirstPersonTest.dll`，保留已有加载器与配置。
