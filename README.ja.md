@@ -2,7 +2,7 @@
 
 [English](README.md) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md)
 
-**Novice Succubus Lillia** に切り替え可能な一人称視点を追加する非公式プラグインです。現在のバージョンは **0.1.28（テスト版）**。ゲーム 1.1、Unity 2022.3.62f2、Windows x64、IL2CPP、BepInEx 6 be.788 で動作確認しています。
+**Apprentice Succubus Lilia** に切り替え可能な一人称視点を追加する非公式プラグインです。現在のバージョンは **0.1.28（テスト版）**。ゲーム 1.1、Unity 2022.3.62f2、Windows x64、IL2CPP、BepInEx 6 be.788 で動作確認しています。
 
 ## インストール手順とトラブル対処
 
